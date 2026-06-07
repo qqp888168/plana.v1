@@ -35,24 +35,22 @@
   margin-bottom: 32px;
 }
 
-/* 左文案、右九宮格 */
-.charity-content-layout {
+/* 左文右圖兩欄 */
+.event-body-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
-  gap: 36px;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
   align-items: start;
-  margin-top: 32px;
 }
 
 /* 心得文字 */
 .charity-story {
   background: white;
   border-radius: 12px;
-  padding: 36px 40px;
+  padding: 36px 32px;
   box-shadow: var(--shadow-sm);
   border-left: 4px solid var(--gold);
-  margin-bottom: 0;
-  max-width: none;
+  height: fit-content;
 }
 .charity-story p {
   font-size: var(--fs-lg);
@@ -62,29 +60,31 @@
 }
 .charity-story p:last-child { margin-bottom: 0; }
 
-/* 右側 3x3 九宮格照片 */
-.charity-photo-grid {
+/* 3×3 九宮格 */
+.grid-3x3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
 }
+
+/* 照片格 */
 .charity-photo-item {
-  aspect-ratio: 1 / 1;
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
   background: var(--ivory);
-  box-shadow: var(--shadow-sm);
+  aspect-ratio: 1 / 1;
 }
 .charity-photo-item img {
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
+  display: block;
   transition: transform .5s ease;
 }
-.charity-photo-item:hover img { transform: scale(1.04); }
+.charity-photo-item:hover img { transform: scale(1.06); }
 .photo-overlay {
   position: absolute;
   inset: 0;
@@ -188,26 +188,12 @@
 .cta-text p { color: var(--warm-mid); font-size: var(--fs-lg); line-height: 1.85; }
 
 @media (max-width: 1024px) {
-  .charity-content-layout {
-    grid-template-columns: 1fr;
-  }
-  .charity-photo-grid {
-    max-width: 560px;
-  }
+  .event-body-grid { grid-template-columns: 1fr; gap: 32px; }
+  .grid-3x3 { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 640px) {
-  .charity-content-layout {
-    gap: 24px;
-  }
-  .charity-photo-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    max-width: none;
-  }
-  .charity-photo-item {
-    border-radius: 6px;
-  }
   .charity-story { padding: 24px 20px; }
+  .grid-3x3 { grid-template-columns: repeat(3, 1fr); gap: 5px; }
 }
 </style>
 </head>
@@ -264,54 +250,57 @@
         <span class="badge badge-rust">餐點分裝</span>
       </div>
 
-      <div class="charity-content-layout">
-        <!-- 左側心得文字 -->
+      <!-- 左文右圖 -->
+      <div class="event-body-grid">
+
+        <!-- 左：心得文字 -->
         <div class="charity-story reveal">
           <p>中午和小夥伴們一起到永和的正德愛心廚房幫忙，從洗菜、切菜到分裝餐點，大家邊忙邊聊天，氣氛很溫暖。雖然只是小小的付出，但把餐點送給需要的人時，心裡覺得很踏實。</p>
           <p>過程中聽到一件事情讓人特別有感觸。夾菜位置有位媽媽和旁邊的大姐聊天，才知道她一個人獨自照顧三個小孩。當下真的很佩服，也有點心疼。生活一定不輕鬆，但她還是很努力把孩子照顧得很好。</p>
           <p>突然覺得，很多媽媽的愛其實都很平凡，藏在每天的辛苦與默默付出裡。也因為這樣，更覺得能和大家一起做點有意義的事情，是一件很幸福的事。希望這份善意，也能慢慢傳遞下去。</p>
         </div>
 
-        <!-- 右側 3x3 九宮格照片：點擊可放大 -->
-        <div class="charity-photo-grid" id="photoGrid1">
-          <div class="charity-photo-item reveal" data-title="正德愛心廚房公益紀錄">
+        <!-- 右：3×3 九宮格 -->
+        <div class="grid-3x3 reveal reveal-delay-1">
+          <div class="charity-photo-item" data-title="正德愛心廚房公益紀錄">
             <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D01.jpg" alt="正德愛心廚房公益活動" loading="lazy">
             <div class="photo-overlay"><span class="photo-title">正德愛心廚房公益紀錄</span></div>
           </div>
-          <div class="charity-photo-item reveal" data-title="志工夥伴一起備餐">
+          <div class="charity-photo-item" data-title="志工夥伴一起備餐">
             <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D02.jpg" alt="志工備餐過程" loading="lazy">
             <div class="photo-overlay"><span class="photo-title">志工夥伴一起備餐</span></div>
           </div>
-          <div class="charity-photo-item reveal" data-title="洗菜切菜的準備過程">
+          <div class="charity-photo-item" data-title="洗菜切菜的準備過程">
             <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D03.jpg" alt="志工備餐過程" loading="lazy">
             <div class="photo-overlay"><span class="photo-title">洗菜切菜的準備過程</span></div>
           </div>
-          <div class="charity-photo-item reveal" data-title="餐點分裝現場">
+          <div class="charity-photo-item" data-title="餐點分裝現場">
             <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D04.jpg" alt="愛心餐點分裝" loading="lazy">
             <div class="photo-overlay"><span class="photo-title">餐點分裝現場</span></div>
           </div>
-          <div class="charity-photo-item reveal" data-title="大家一起完成的溫暖行動">
+          <div class="charity-photo-item" data-title="大家一起完成的溫暖行動">
             <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D05.jpg" alt="公益陪伴紀錄" loading="lazy">
             <div class="photo-overlay"><span class="photo-title">大家一起完成的溫暖行動</span></div>
           </div>
-          <div class="charity-photo-item reveal" data-title="愛心餐點準備中">
+          <div class="charity-photo-item" data-title="愛心餐點準備中">
             <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D06.jpg" alt="愛心餐點分裝" loading="lazy">
             <div class="photo-overlay"><span class="photo-title">愛心餐點準備中</span></div>
           </div>
-          <div class="charity-photo-item reveal" data-title="志工夥伴交流時光">
+          <div class="charity-photo-item" data-title="志工夥伴交流時光">
             <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D07.jpg" alt="志工互動花絮" loading="lazy">
             <div class="photo-overlay"><span class="photo-title">志工夥伴交流時光</span></div>
           </div>
-          <div class="charity-photo-item reveal" data-title="把餐點送給需要的人">
+          <div class="charity-photo-item" data-title="把餐點送給需要的人">
             <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D08.jpg" alt="公益陪伴紀錄" loading="lazy">
             <div class="photo-overlay"><span class="photo-title">把餐點送給需要的人</span></div>
           </div>
-          <div class="charity-photo-item reveal" data-title="讓善意慢慢傳遞下去">
+          <div class="charity-photo-item" data-title="讓善意慢慢傳遞下去">
             <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D09.jpg" alt="公益陪伴紀錄" loading="lazy">
             <div class="photo-overlay"><span class="photo-title">讓善意慢慢傳遞下去</span></div>
           </div>
         </div>
-      </div>
+
+      </div><!-- end event-body-grid -->
 
     </section>
 
