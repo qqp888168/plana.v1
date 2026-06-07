@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>共學與你 — 終身學習，共好同行</title>
-<meta name="description" content="共學與你是一個以公益為核心的終身學習平台，為熟齡族群提供藝術、人文、數位與健康等多元課程，在共學中找到生命的溫度。">
+<title>共學與你 — 讓學習成為生活的一部分</title>
+<meta name="description" content="共學與你整理適合熟齡朋友的課程資訊、活動花絮與公益陪伴紀錄，希望讓每位朋友都能輕鬆參與、慢慢認識志同道合的夥伴。">
 <link rel="stylesheet" href="css/global.css">
 <style>
 /* ── Hero ── */
@@ -42,25 +42,17 @@
   background: var(--gold);
 }
 .hero-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
-  color: var(--bark);
-  line-height: 1.15;
-  margin-bottom: 8px;
-}
-.hero-title-cn {
   font-family: 'Noto Serif TC', serif;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  font-weight: 300;
-  color: var(--warm-mid);
-  letter-spacing: .2em;
-  margin-bottom: 28px;
-  display: block;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 600;
+  color: var(--bark);
+  line-height: 1.35;
+  margin-bottom: 24px;
 }
 .hero-desc {
   font-size: clamp(1rem, 1.5vw, 1.1rem);
   color: var(--warm-mid);
-  line-height: 1.85;
+  line-height: 1.95;
   max-width: 420px;
   margin-bottom: 44px;
 }
@@ -69,33 +61,47 @@
   gap: 16px;
   flex-wrap: wrap;
 }
-.hero-trust {
+.hero-highlights {
   margin-top: 52px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
   padding-top: 36px;
   border-top: 1px solid var(--border);
+  flex-wrap: wrap;
 }
-.hero-trust-item {
-  text-align: center;
+.hero-hi-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
-.hero-trust-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.8rem;
+.hero-hi-icon {
+  width: 36px; height: 36px;
+  background: rgba(200,149,108,.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.hero-hi-text .hi-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: var(--fs-sm);
+  font-weight: 600;
   color: var(--bark);
-  line-height: 1;
 }
-.hero-trust-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: .72rem;
-  letter-spacing: .08em;
+.hero-hi-text .hi-desc {
+  font-size: var(--fs-xs);
   color: var(--warm-mid);
-  margin-top: 4px;
+  line-height: 1.6;
+  margin-top: 2px;
 }
-.hero-trust-divider {
-  width: 1px; height: 40px;
+.hero-hi-divider {
+  width: 1px; height: 44px;
   background: var(--border);
+  align-self: center;
 }
 
 /* Hero right — collage */
@@ -140,9 +146,7 @@
 }
 
 /* ── Photo Wall Section ── */
-.photowall-section {
-  background: var(--ivory);
-}
+.photowall-section { background: var(--ivory); }
 .photowall-section .section-header {
   display: flex;
   align-items: flex-end;
@@ -150,8 +154,6 @@
   flex-wrap: wrap;
   gap: 20px;
 }
-
-/* Filter tabs */
 .filter-tabs {
   display: flex;
   gap: 8px;
@@ -159,28 +161,24 @@
   margin-bottom: 36px;
 }
 .filter-tab {
-  padding: 8px 20px;
+  padding: 9px 20px;
   border-radius: 24px;
   border: 1.5px solid var(--border);
   background: white;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Noto Serif TC', serif;
   font-size: var(--fs-sm);
   color: var(--warm-mid);
   cursor: pointer;
   transition: all .25s;
+  min-height: 44px;
 }
-.filter-tab:hover,
-.filter-tab.active {
+.filter-tab:hover, .filter-tab.active {
   border-color: var(--gold);
   background: var(--gold);
   color: white;
 }
-
-/* Masonry-style grid */
-.photo-grid {
-  columns: 4;
-  column-gap: 14px;
-}
+/* Masonry grid */
+.photo-grid { columns: 4; column-gap: 14px; }
 .photo-item {
   break-inside: avoid;
   margin-bottom: 14px;
@@ -209,10 +207,8 @@
 }
 .photo-item:hover .photo-overlay { opacity: 1; }
 .photo-overlay .photo-cat {
-  font-family: 'DM Sans', sans-serif;
-  font-size: .65rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  font-family: 'Noto Serif TC', serif;
+  font-size: .72rem;
   color: var(--gold);
   margin-bottom: 5px;
 }
@@ -221,13 +217,11 @@
   font-size: .9rem;
   font-weight: 500;
   color: white;
-  line-height: 1.4;
+  line-height: 1.45;
 }
-
 /* Lightbox */
 .lightbox {
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background: rgba(30,18,10,.93);
   z-index: 9999;
   display: none;
@@ -244,11 +238,7 @@
   overflow: hidden;
   box-shadow: 0 40px 120px rgba(0,0,0,.6);
 }
-.lightbox-inner img {
-  max-height: 80vh;
-  width: auto;
-  display: block;
-}
+.lightbox-inner img { max-height: 80vh; width: auto; display: block; }
 .lightbox-caption {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -259,33 +249,28 @@
 .lightbox-close {
   position: absolute;
   top: 16px; right: 16px;
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   background: rgba(0,0,0,.5);
-  border: none;
-  border-radius: 50%;
-  color: white;
-  font-size: 1.2rem;
+  border: none; border-radius: 50%;
+  color: white; font-size: 1.2rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   transition: background .2s;
 }
 .lightbox-close:hover { background: var(--gold); }
 
-/* ── Why Us ── */
+/* ── We Value ── */
 .why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 28px;
 }
 .why-card {
-  padding: 40px 32px;
+  padding: 36px 28px;
   background: white;
   border-radius: 10px;
-  border-bottom: 3px solid transparent;
   box-shadow: var(--shadow-sm);
-  transition: border-color .3s, transform .3s;
+  transition: transform .3s;
   position: relative;
   overflow: hidden;
 }
@@ -302,18 +287,16 @@
 .why-card:hover::before { transform: scaleX(1); }
 .why-card:hover { transform: translateY(-5px); }
 .why-icon {
-  width: 56px; height: 56px;
-  border-radius: 12px;
+  width: 52px; height: 52px;
+  border-radius: 10px;
   background: rgba(200,149,108,.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 18px;
 }
 .why-title {
   font-family: 'Noto Serif TC', serif;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--bark);
   margin-bottom: 12px;
@@ -321,15 +304,11 @@
 .why-text {
   font-size: var(--fs-sm);
   color: var(--warm-mid);
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 /* ── Featured Courses ── */
-.courses-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
+.courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .course-card {
   background: white;
   border-radius: 10px;
@@ -337,28 +316,12 @@
   box-shadow: var(--shadow-sm);
   transition: transform .3s, box-shadow .3s;
 }
-.course-card:hover {
-  transform: translateY(-7px);
-  box-shadow: var(--shadow-md);
-}
-.course-img {
-  aspect-ratio: 16/10;
-  overflow: hidden;
-  background: var(--ivory);
-}
-.course-img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform .5s;
-}
+.course-card:hover { transform: translateY(-7px); box-shadow: var(--shadow-md); }
+.course-img { aspect-ratio: 16/10; overflow: hidden; background: var(--ivory); }
+.course-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
 .course-card:hover .course-img img { transform: scale(1.06); }
 .course-body { padding: 24px; }
-.course-meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
+.course-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
 .course-name {
   font-family: 'Noto Serif TC', serif;
   font-size: 1.05rem;
@@ -370,7 +333,7 @@
 .course-desc {
   font-size: var(--fs-sm);
   color: var(--warm-mid);
-  line-height: 1.75;
+  line-height: 1.85;
   margin-bottom: 20px;
 }
 .course-footer {
@@ -380,85 +343,66 @@
   padding-top: 16px;
   border-top: 1px solid var(--border);
 }
-.course-info {
-  font-family: 'DM Sans', sans-serif;
-  font-size: var(--fs-xs);
-  color: var(--warm-mid);
-}
-.course-info strong {
-  color: var(--bark);
-  font-weight: 600;
-}
+.course-info { font-size: var(--fs-xs); color: var(--warm-mid); }
 
-/* ── Stats ── */
-.stats-section {
-  background: linear-gradient(135deg, var(--bark) 0%, #5C3520 100%);
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-.stats-section::before {
-  content: '共學';
-  position: absolute;
-  font-family: 'Noto Serif TC', serif;
-  font-size: 20vw;
-  font-weight: 700;
-  color: rgba(255,255,255,.03);
-  line-height: 1;
-  top: 50%; right: -2%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  user-select: none;
-}
-.stats-grid {
+/* ── We Are Doing ── */
+.doing-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  text-align: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
-.stat-item {}
-.stat-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(2.5rem, 5vw, 3.8rem);
-  color: var(--gold);
+.doing-card {
+  background: white;
+  border-radius: 10px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: transform .3s;
+}
+.doing-card:hover { transform: translateY(-4px); }
+.doing-num {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(200,149,108,.3);
+  flex-shrink: 0;
   line-height: 1;
-  margin-bottom: 10px;
+  margin-top: 4px;
 }
-.stat-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: var(--fs-sm);
-  color: rgba(255,255,255,.65);
-  letter-spacing: .05em;
+.doing-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 8px;
 }
+.doing-text { font-size: var(--fs-sm); color: var(--warm-mid); line-height: 1.85; }
 
 /* ── Testimonials ── */
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .testimonial-card {
   background: white;
-  padding: 36px 32px;
+  padding: 36px 28px;
   border-radius: 10px;
   box-shadow: var(--shadow-sm);
   position: relative;
 }
 .testimonial-card::before {
-  content: '"';
+  content: '「';
   position: absolute;
-  top: 20px; right: 28px;
-  font-family: 'DM Serif Display', serif;
-  font-size: 4rem;
+  top: 20px; right: 24px;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 3.5rem;
   color: rgba(200,149,108,.2);
   line-height: 1;
 }
 .testimonial-text {
   font-size: var(--fs-md);
   color: var(--charcoal);
-  line-height: 1.85;
+  line-height: 1.95;
   margin-bottom: 24px;
-  position: relative;
 }
 .testimonial-author {
   display: flex;
@@ -472,10 +416,10 @@
   overflow: hidden;
   flex-shrink: 0;
   border: 2px solid rgba(200,149,108,.25);
-}
-.testimonial-avatar img {
-  width: 100%; height: 100%;
-  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
 }
 .testimonial-name {
   font-family: 'Noto Serif TC', serif;
@@ -483,18 +427,10 @@
   font-size: var(--fs-sm);
   color: var(--bark);
 }
-.testimonial-role {
-  font-family: 'DM Sans', sans-serif;
-  font-size: var(--fs-xs);
-  color: var(--gold);
-}
+.testimonial-role { font-size: var(--fs-xs); color: var(--gold); margin-top: 2px; }
 
-/* ── CTA Banner ── */
-.cta-banner {
-  background: var(--ivory);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
+/* ── CTA ── */
+.cta-banner { background: var(--ivory); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .cta-inner {
   display: flex;
   align-items: center;
@@ -503,15 +439,12 @@
   flex-wrap: wrap;
 }
 .cta-text h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
   color: var(--bark);
   margin-bottom: 8px;
 }
-.cta-text p {
-  color: var(--warm-mid);
-  font-size: var(--fs-lg);
-}
+.cta-text p { color: var(--warm-mid); font-size: var(--fs-lg); line-height: 1.8; }
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -519,13 +452,14 @@
   .hero-right { display: none; }
   .hero-left { padding: 64px 24px 56px; }
   .photo-grid { columns: 3; }
-  .why-grid, .courses-grid, .stats-grid, .testimonial-grid { grid-template-columns: 1fr 1fr; }
+  .why-grid, .courses-grid, .testimonial-grid { grid-template-columns: 1fr 1fr; }
+  .doing-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .photo-grid { columns: 2; }
   .why-grid, .courses-grid, .testimonial-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .hero-trust { flex-wrap: wrap; gap: 16px; }
+  .hero-highlights { flex-direction: column; gap: 16px; }
+  .hero-hi-divider { display: none; }
 }
 </style>
 </head>
@@ -536,13 +470,12 @@
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo">
       <span class="logo-cn">共學與你</span>
-      <span class="logo-en">Learn Together With You</span>
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">首頁</a></li>
       <li><a href="about.html">關於我們</a></li>
       <li><a href="courses.html">課程總覽</a></li>
-      <li><a href="gallery.html">精彩花絮</a></li>
+      <li><a href="gallery.html">活動花絮</a></li>
       <li><a href="news.html">最新消息</a></li>
       <li><a href="contact.html" class="nav-cta">聯絡我們</a></li>
     </ul>
@@ -555,7 +488,7 @@
   <a href="index.html">首頁</a>
   <a href="about.html">關於我們</a>
   <a href="courses.html">課程總覽</a>
-  <a href="gallery.html">精彩花絮</a>
+  <a href="gallery.html">活動花絮</a>
   <a href="news.html">最新消息</a>
   <a href="contact.html">聯絡我們</a>
 </nav>
@@ -565,61 +498,67 @@
   <div class="hero-left">
     <div class="hero-eyebrow">
       <span class="line"></span>
-      <span class="label">終身學習 · 公益共好</span>
+      <span class="label">熟齡課程社群</span>
     </div>
-    <h1 class="hero-title">Learn Together,<br>Grow Together.</h1>
-    <span class="hero-title-cn">共學與你，溫暖同行</span>
+    <h1 class="hero-title">共學與你<br>讓學習成為<br>生活的一部分</h1>
     <p class="hero-desc">
-      我們相信，學習沒有年齡的界限。<br>
-      在這裡，每一位熟齡學員都能找到屬於自己的舞台——
-      透過課程、創作與陪伴，重新發現生命的豐盛。
+      我們陪伴熟齡朋友一起參與課程、認識朋友、分享生活，也在一次次活動中，讓日子變得更有期待。
     </p>
     <div class="hero-actions">
-      <a href="courses.html" class="btn btn-primary">探索課程 →</a>
-      <a href="about.html" class="btn btn-outline">認識我們</a>
+      <a href="courses.html" class="btn btn-primary">查看近期課程</a>
+      <a href="contact.html" class="btn btn-outline">加入 LINE 詢問</a>
     </div>
-    <div class="hero-trust">
-      <div class="hero-trust-item">
-        <div class="hero-trust-num">1,200+</div>
-        <div class="hero-trust-label">累計學員</div>
+    <div class="hero-highlights">
+      <div class="hero-hi-item">
+        <div class="hero-hi-icon">📚</div>
+        <div class="hero-hi-text">
+          <div class="hi-name">課程整理</div>
+          <div class="hi-desc">整理各地適合<br>熟齡朋友的課程</div>
+        </div>
       </div>
-      <div class="hero-trust-divider"></div>
-      <div class="hero-trust-item">
-        <div class="hero-trust-num">80+</div>
-        <div class="hero-trust-label">精選課程</div>
+      <div class="hero-hi-divider"></div>
+      <div class="hero-hi-item">
+        <div class="hero-hi-icon">📷</div>
+        <div class="hero-hi-text">
+          <div class="hi-name">活動花絮</div>
+          <div class="hi-desc">記錄每次相聚<br>與學習的片段</div>
+        </div>
       </div>
-      <div class="hero-trust-divider"></div>
-      <div class="hero-trust-item">
-        <div class="hero-trust-num">5年</div>
-        <div class="hero-trust-label">深耕在地</div>
+      <div class="hero-hi-divider"></div>
+      <div class="hero-hi-item">
+        <div class="hero-hi-icon">🤝</div>
+        <div class="hero-hi-text">
+          <div class="hi-name">公益陪伴</div>
+          <div class="hi-desc">一起把學習<br>延伸成回饋</div>
+        </div>
       </div>
     </div>
   </div>
   <div class="hero-right">
     <div class="hero-collage">
       <div class="collage-img ci-1">
-        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="學員共學互動">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="熟齡朋友交流">
       </div>
       <div class="collage-img ci-2">
-        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80" alt="藝術創作課程">
+        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&q=80" alt="手作課程">
       </div>
       <div class="collage-img ci-3">
         <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80" alt="公益活動紀錄">
       </div>
       <div class="collage-img ci-4">
-        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&q=80" alt="數位學習課程">
+        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&q=80" alt="課程花絮">
       </div>
       <div class="collage-img ci-5">
-        <img src="https://images.unsplash.com/photo-1603354350317-6f7aaa5911c5?w=600&q=80" alt="手作工藝班">
+        <img src="https://images.unsplash.com/photo-1603354350317-6f7aaa5911c5?w=600&q=80" alt="手作體驗">
       </div>
       <div class="collage-img ci-6">
-        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=500&q=80" alt="健康養生課">
+        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=500&q=80" alt="健康活動">
       </div>
       <div class="collage-img ci-7">
-        <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=600&q=80" alt="學員成果展">
+        <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=600&q=80" alt="活動合照">
       </div>
       <div class="collage-img ci-8">
-        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=500&q=80" alt="音樂分享會">
+        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=500&q=80" alt="生活學習紀錄">
       </div>
     </div>
     <div class="collage-overlay"></div>
@@ -631,163 +570,161 @@
   <div class="container">
     <div class="section-header">
       <div>
-        <span class="label">Gallery</span>
+        <span class="label">課程花絮與活動紀錄</span>
         <div class="divider"></div>
-        <h2 class="section-heading">共學精彩花絮</h2>
-        <p class="section-sub">每一張照片，都是一個真實的生命故事。</p>
+        <h2 class="section-heading">課程花絮與活動紀錄</h2>
+        <p class="section-sub">這裡記錄大家一起上課、手作、交流與參與公益的片段，每一次相聚，都是生活裡很珍貴的回憶。</p>
       </div>
-      <a href="gallery.html" class="btn btn-outline">查看全部 →</a>
+      <a href="gallery.html" class="btn btn-outline">查看更多 →</a>
     </div>
 
     <div class="filter-tabs">
       <button class="filter-tab active" data-filter="all">全部</button>
       <button class="filter-tab" data-filter="course">課程花絮</button>
-      <button class="filter-tab" data-filter="charity">公益活動</button>
-      <button class="filter-tab" data-filter="interaction">學員互動</button>
-      <button class="filter-tab" data-filter="work">作品紀錄</button>
+      <button class="filter-tab" data-filter="charity">公益紀錄</button>
+      <button class="filter-tab" data-filter="interaction">交流互動</button>
+      <button class="filter-tab" data-filter="work">學員作品</button>
     </div>
 
     <div class="photo-grid" id="photoGrid">
-      <!-- 課程花絮 -->
-      <div class="photo-item reveal" data-cat="course" data-title="水彩風景課程｜2024春季班">
-        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&q=80" alt="水彩課程" loading="lazy">
+      <div class="photo-item reveal" data-cat="course" data-title="手作課程花絮">
+        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&q=80" alt="手作課程" loading="lazy">
         <div class="photo-overlay">
           <span class="photo-cat">課程花絮</span>
-          <span class="photo-title">水彩風景課程｜2024春季班</span>
+          <span class="photo-title">手作課程花絮</span>
         </div>
       </div>
-      <div class="photo-item reveal reveal-delay-1" data-cat="interaction" data-title="學員分享交流午茶時光">
-        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="學員互動" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%;">
+      <div class="photo-item reveal reveal-delay-1" data-cat="interaction" data-title="課後交流時光">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="熟齡朋友交流" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%;">
         <div class="photo-overlay">
-          <span class="photo-cat">學員互動</span>
-          <span class="photo-title">學員分享交流午茶時光</span>
+          <span class="photo-cat">交流互動</span>
+          <span class="photo-title">課後交流時光</span>
         </div>
       </div>
-      <div class="photo-item reveal reveal-delay-2" data-cat="work" data-title="手工皂作品成果展">
-        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=600&q=80" alt="手工皂作品" loading="lazy">
+      <div class="photo-item reveal reveal-delay-2" data-cat="work" data-title="學員作品分享">
+        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=600&q=80" alt="學員作品" loading="lazy">
         <div class="photo-overlay">
-          <span class="photo-cat">作品紀錄</span>
-          <span class="photo-title">手工皂作品成果展</span>
+          <span class="photo-cat">學員作品</span>
+          <span class="photo-title">學員作品分享</span>
         </div>
       </div>
-      <div class="photo-item reveal" data-cat="charity" data-title="社區長者關懷公益探訪">
-        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" alt="公益活動" loading="lazy" style="aspect-ratio:3/4;object-fit:cover;width:100%;">
+      <div class="photo-item reveal" data-cat="charity" data-title="公益陪伴紀錄">
+        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" alt="公益活動紀錄" loading="lazy" style="aspect-ratio:3/4;object-fit:cover;width:100%;">
         <div class="photo-overlay">
-          <span class="photo-cat">公益活動</span>
-          <span class="photo-title">社區長者關懷公益探訪</span>
+          <span class="photo-cat">公益紀錄</span>
+          <span class="photo-title">公益陪伴紀錄</span>
         </div>
       </div>
-      <div class="photo-item reveal reveal-delay-1" data-cat="course" data-title="書法入門班｜初學者友善">
-        <img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?w=600&q=80" alt="書法課程" loading="lazy">
-        <div class="photo-overlay">
-          <span class="photo-cat">課程花絮</span>
-          <span class="photo-title">書法入門班｜初學者友善</span>
-        </div>
-      </div>
-      <div class="photo-item reveal reveal-delay-2" data-cat="work" data-title="陶藝創作班期末成果展">
-        <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80" alt="陶藝作品" loading="lazy">
-        <div class="photo-overlay">
-          <span class="photo-cat">作品紀錄</span>
-          <span class="photo-title">陶藝創作班期末成果展</span>
-        </div>
-      </div>
-      <div class="photo-item reveal" data-cat="interaction" data-title="結業典禮合影留念">
-        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=700&q=80" alt="結業典禮" loading="lazy">
-        <div class="photo-overlay">
-          <span class="photo-cat">學員互動</span>
-          <span class="photo-title">結業典禮合影留念</span>
-        </div>
-      </div>
-      <div class="photo-item reveal reveal-delay-1" data-cat="charity" data-title="環保綠化公益種樹活動">
-        <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=600&q=80" alt="種樹活動" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%;">
-        <div class="photo-overlay">
-          <span class="photo-cat">公益活動</span>
-          <span class="photo-title">環保綠化公益種樹活動</span>
-        </div>
-      </div>
-      <div class="photo-item reveal reveal-delay-2" data-cat="course" data-title="智慧手機攝影美學課">
-        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&q=80" alt="攝影課" loading="lazy">
+      <div class="photo-item reveal reveal-delay-1" data-cat="course" data-title="熟齡課程現場">
+        <img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?w=600&q=80" alt="熟齡課程現場" loading="lazy">
         <div class="photo-overlay">
           <span class="photo-cat">課程花絮</span>
-          <span class="photo-title">智慧手機攝影美學課</span>
+          <span class="photo-title">熟齡課程現場</span>
         </div>
       </div>
-      <div class="photo-item reveal" data-cat="work" data-title="學員攝影作品聯展">
-        <img src="https://images.unsplash.com/photo-1495745966610-2a67f2297e5e?w=600&q=80" alt="攝影展" loading="lazy" style="aspect-ratio:3/4;object-fit:cover;width:100%;">
+      <div class="photo-item reveal reveal-delay-2" data-cat="work" data-title="學員作品分享">
+        <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80" alt="學員作品" loading="lazy">
         <div class="photo-overlay">
-          <span class="photo-cat">作品紀錄</span>
-          <span class="photo-title">學員攝影作品聯展</span>
+          <span class="photo-cat">學員作品</span>
+          <span class="photo-title">學員作品分享</span>
         </div>
       </div>
-      <div class="photo-item reveal reveal-delay-1" data-cat="interaction" data-title="新春圍爐共學迎新年">
-        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&q=80" alt="新春活動" loading="lazy">
+      <div class="photo-item reveal" data-cat="interaction" data-title="活動合照">
+        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=700&q=80" alt="活動合照" loading="lazy">
         <div class="photo-overlay">
-          <span class="photo-cat">學員互動</span>
-          <span class="photo-title">新春圍爐共學迎新年</span>
+          <span class="photo-cat">交流互動</span>
+          <span class="photo-title">活動合照</span>
         </div>
       </div>
-      <div class="photo-item reveal reveal-delay-2" data-cat="charity" data-title="偏鄉童趣夏令營志工服務">
-        <img src="https://images.unsplash.com/photo-1564144006388-615f4d2e7e05?w=600&q=80" alt="夏令營" loading="lazy">
+      <div class="photo-item reveal reveal-delay-1" data-cat="charity" data-title="志工活動紀錄">
+        <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=600&q=80" alt="志工活動紀錄" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%;">
         <div class="photo-overlay">
-          <span class="photo-cat">公益活動</span>
-          <span class="photo-title">偏鄉童趣夏令營志工服務</span>
+          <span class="photo-cat">公益紀錄</span>
+          <span class="photo-title">志工活動紀錄</span>
+        </div>
+      </div>
+      <div class="photo-item reveal reveal-delay-2" data-cat="course" data-title="生活學習紀錄">
+        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&q=80" alt="生活學習紀錄" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">課程花絮</span>
+          <span class="photo-title">生活學習紀錄</span>
+        </div>
+      </div>
+      <div class="photo-item reveal" data-cat="work" data-title="學員作品分享">
+        <img src="https://images.unsplash.com/photo-1495745966610-2a67f2297e5e?w=600&q=80" alt="學員作品" loading="lazy" style="aspect-ratio:3/4;object-fit:cover;width:100%;">
+        <div class="photo-overlay">
+          <span class="photo-cat">學員作品</span>
+          <span class="photo-title">學員作品分享</span>
+        </div>
+      </div>
+      <div class="photo-item reveal reveal-delay-1" data-cat="interaction" data-title="課後交流時光">
+        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&q=80" alt="課後交流" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">交流互動</span>
+          <span class="photo-title">課後交流時光</span>
+        </div>
+      </div>
+      <div class="photo-item reveal reveal-delay-2" data-cat="charity" data-title="公益陪伴紀錄">
+        <img src="https://images.unsplash.com/photo-1564144006388-615f4d2e7e05?w=600&q=80" alt="公益陪伴紀錄" loading="lazy">
+        <div class="photo-overlay">
+          <span class="photo-cat">公益紀錄</span>
+          <span class="photo-title">公益陪伴紀錄</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Lightbox ── -->
+<!-- Lightbox -->
 <div class="lightbox" id="lightbox">
   <div class="lightbox-inner">
     <img id="lightboxImg" src="" alt="">
     <div class="lightbox-caption">
       <span class="photo-cat" id="lightboxCat"></span>
-      <div class="photo-title" id="lightboxTitle" style="color:white;font-size:1rem;font-family:'Noto Serif TC',serif;margin-top:4px;"></div>
+      <div id="lightboxTitle" style="color:white;font-size:1rem;font-family:'Noto Serif TC',serif;margin-top:4px;"></div>
     </div>
   </div>
   <button class="lightbox-close" id="lightboxClose">✕</button>
 </div>
 
-<!-- ══ Why Us ══ -->
+<!-- ══ We Value ══ -->
 <section class="section" style="background:var(--cream);">
   <div class="container">
     <div class="section-header text-center">
-      <span class="label">Why Choose Us</span>
+      <h2 class="section-heading">我們重視的事</h2>
       <div class="divider"></div>
-      <h2 class="section-heading">為什麼選擇共學與你</h2>
-      <p class="section-sub">我們不只是一個學習平台，更是一個有溫度的學習社群。</p>
+      <p class="section-sub">不只是整理課程，也希望讓每位朋友都感覺有人一起走。</p>
     </div>
     <div class="why-grid">
       <div class="why-card reveal">
         <div class="why-icon">🌱</div>
-        <div class="why-title">專為熟齡設計的課程</div>
-        <p class="why-text">每門課程均由專業師資設計，考量熟齡族群的學習節奏與需求，步調舒適、內容豐富，讓您學得輕鬆、有成就感。</p>
+        <div class="why-title">課程簡單好參與</div>
+        <p class="why-text">不需要有基礎，只要有興趣，都可以跟著老師慢慢學。我們整理的課程都以輕鬆體驗為主。</p>
       </div>
       <div class="why-card reveal reveal-delay-1">
         <div class="why-icon">🤝</div>
-        <div class="why-title">公益精神貫穿辦學</div>
-        <p class="why-text">我們堅持公益優先，部分課程以優惠或免費方式提供，並定期舉辦社區服務，讓學習不只是個人成長，更是回饋社會。</p>
+        <div class="why-title">有人陪伴比較安心</div>
+        <p class="why-text">從課程資訊、報名提醒到活動紀錄，我們希望讓每位朋友都感覺有人一起走，不用自己摸索。</p>
       </div>
       <div class="why-card reveal reveal-delay-2">
         <div class="why-icon">💛</div>
-        <div class="why-title">溫暖有愛的共學社群</div>
-        <p class="why-text">這裡有志同道合的夥伴，也有互相支持的師生情誼。定期聚會、成果展與聯誼活動，讓學習之路不再孤單。</p>
+        <div class="why-title">學習也能認識朋友</div>
+        <p class="why-text">來上課不只是學東西，也能和同樣喜歡生活、喜歡交流的人互動，讓生活多一點連結。</p>
       </div>
       <div class="why-card reveal">
-        <div class="why-icon">🎨</div>
-        <div class="why-title">多元豐富的課程選擇</div>
-        <p class="why-text">從藝術創作、人文歷史、數位科技到健康養生，超過80門精選課程，滿足不同興趣與生活目標。</p>
+        <div class="why-icon">❤️</div>
+        <div class="why-title">公益不是口號</div>
+        <p class="why-text">有機會時，我們也會一起參與公益活動，把學習延伸成對社會的小小回饋。</p>
       </div>
       <div class="why-card reveal reveal-delay-1">
-        <div class="why-icon">📍</div>
-        <div class="why-title">深耕在地五年</div>
-        <p class="why-text">紮根社區五年，與在地機構、社福團體長期合作，您選擇的是一個真正了解這片土地的組織。</p>
+        <div class="why-icon">📋</div>
+        <div class="why-title">資訊清楚不複雜</div>
+        <p class="why-text">課程時間、地點、費用與注意事項都盡量整理清楚，讓大家看得懂、好操作。</p>
       </div>
       <div class="why-card reveal reveal-delay-2">
-        <div class="why-icon">🏆</div>
-        <div class="why-title">專業師資認證保證</div>
-        <p class="why-text">嚴格篩選具備教學熱忱與專業資格的師資，並定期進行教學評估，確保每位學員獲得高品質的學習體驗。</p>
+        <div class="why-icon">👓</div>
+        <div class="why-title">適合熟齡族群閱讀</div>
+        <p class="why-text">網站文字、課程說明與報名流程，都以清楚、簡單、好理解為主，不用擔心看不懂。</p>
       </div>
     </div>
   </div>
@@ -798,58 +735,52 @@
   <div class="container">
     <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;">
       <div>
-        <span class="label">Featured Courses</span>
+        <span class="label">近期課程</span>
         <div class="divider"></div>
-        <h2 class="section-heading">熱門精選課程</h2>
-        <p class="section-sub">深受學員喜愛，名額有限，請把握機會。</p>
+        <h2 class="section-heading">近期課程</h2>
+        <p class="section-sub">以下為範例課程類型，實際開課內容請以社群公告為準。</p>
       </div>
       <a href="courses.html" class="btn btn-outline">全部課程 →</a>
     </div>
     <div class="courses-grid">
       <div class="course-card reveal">
         <div class="course-img">
-          <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=700&q=80" alt="水彩課">
+          <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=700&q=80" alt="手作體驗課">
         </div>
         <div class="course-body">
-          <div class="course-meta">
-            <span class="badge badge-gold">藝術創作</span>
-          </div>
-          <div class="course-name">水彩風景畫入門班</div>
-          <p class="course-desc">從零開始學習水彩技法，透過大自然風景題材，培養美感與放鬆身心的藝術習慣。</p>
+          <div class="course-meta"><span class="badge badge-gold">手作體驗</span></div>
+          <div class="course-name">手作體驗課程</div>
+          <p class="course-desc">適合對手作有興趣的朋友，從基礎開始，跟著老師慢慢做，不用有任何基礎。</p>
           <div class="course-footer">
-            <div class="course-info">每週二 ／ <strong>14:00–16:00</strong></div>
+            <div class="course-info">時間與地點依公告為準</div>
             <a href="courses.html" class="btn btn-ghost">了解更多</a>
           </div>
         </div>
       </div>
       <div class="course-card reveal reveal-delay-1">
         <div class="course-img">
-          <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=700&q=80" alt="攝影課">
+          <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=700&q=80" alt="生活學習課程">
         </div>
         <div class="course-body">
-          <div class="course-meta">
-            <span class="badge badge-sage">數位科技</span>
-          </div>
-          <div class="course-name">手機攝影美學課程</div>
-          <p class="course-desc">用您手中的智慧手機，拍出有溫度的生活影像。無須昂貴設備，只需一顆觀察的心。</p>
+          <div class="course-meta"><span class="badge badge-sage">生活學習</span></div>
+          <div class="course-name">生活學習課程</div>
+          <p class="course-desc">和志同道合的朋友一起學習生活中用得到的技能，輕鬆參與，沒有壓力。</p>
           <div class="course-footer">
-            <div class="course-info">每週四 ／ <strong>10:00–12:00</strong></div>
+            <div class="course-info">時間與地點依公告為準</div>
             <a href="courses.html" class="btn btn-ghost">了解更多</a>
           </div>
         </div>
       </div>
       <div class="course-card reveal reveal-delay-2">
         <div class="course-img">
-          <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=700&q=80" alt="健康課">
+          <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=700&q=80" alt="健康活動">
         </div>
         <div class="course-body">
-          <div class="course-meta">
-            <span class="badge badge-rust">健康養生</span>
-          </div>
-          <div class="course-name">經絡養生瑜伽班</div>
-          <p class="course-desc">結合傳統中醫經絡概念與現代瑜伽動作，舒緩肩頸痠痛，促進循環，適合各年齡層。</p>
+          <div class="course-meta"><span class="badge badge-rust">健康活動</span></div>
+          <div class="course-name">健康活動課程</div>
+          <p class="course-desc">適合各年齡層的健康相關課程或活動，以舒緩、體驗為主，讓身體也跟著放鬆一下。</p>
           <div class="course-footer">
-            <div class="course-info">每週一三五 ／ <strong>08:00–09:00</strong></div>
+            <div class="course-info">時間與地點依公告為準</div>
             <a href="courses.html" class="btn btn-ghost">了解更多</a>
           </div>
         </div>
@@ -858,30 +789,45 @@
   </div>
 </section>
 
-<!-- ══ Stats ══ -->
-<section class="stats-section section">
-  <div class="container">
-    <div class="section-header text-center" style="margin-bottom:56px;">
-      <span class="label" style="color:var(--gold);">By The Numbers</span>
+<!-- ══ We Are Doing ══ -->
+<section class="section" style="background:linear-gradient(135deg, var(--bark) 0%, #5C3520 100%);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;pointer-events:none;user-select:none;display:flex;align-items:center;justify-content:flex-end;padding-right:4%;">
+    <span style="font-family:'Noto Serif TC',serif;font-size:18vw;font-weight:700;color:rgba(255,255,255,.03);line-height:1;">共學</span>
+  </div>
+  <div class="container" style="position:relative;">
+    <div class="section-header text-center" style="margin-bottom:48px;">
+      <h2 class="section-heading" style="color:white;">我們持續在做的事</h2>
       <div class="divider" style="background:var(--gold);margin-inline:auto;"></div>
-      <h2 class="section-heading" style="color:white;">五年深耕，數字見證</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.7);margin-inline:auto;">不是大計畫，而是一件一件認真去做的小事。</p>
     </div>
-    <div class="stats-grid">
-      <div class="stat-item reveal">
-        <div class="stat-num"><span data-count="1258" data-suffix="+">0</span></div>
-        <div class="stat-label">累計受益學員</div>
+    <div class="doing-grid">
+      <div class="doing-card reveal">
+        <div class="doing-num">01</div>
+        <div>
+          <div class="doing-title">整理各地課程資訊</div>
+          <p class="doing-text">把分散在各處的熟齡課程資訊整理起來，讓大家可以更輕鬆地找到想參與的內容。</p>
+        </div>
       </div>
-      <div class="stat-item reveal reveal-delay-1">
-        <div class="stat-num"><span data-count="83">0</span></div>
-        <div class="stat-label">精選開設課程</div>
+      <div class="doing-card reveal reveal-delay-1">
+        <div class="doing-num">02</div>
+        <div>
+          <div class="doing-title">分享真實活動花絮</div>
+          <p class="doing-text">把每次課程與活動的照片和紀錄整理起來，讓沒參與到的朋友也能感受現場的溫度。</p>
+        </div>
       </div>
-      <div class="stat-item reveal reveal-delay-2">
-        <div class="stat-num"><span data-count="47">0</span></div>
-        <div class="stat-label">專業師資陣容</div>
+      <div class="doing-card reveal reveal-delay-2">
+        <div class="doing-num">03</div>
+        <div>
+          <div class="doing-title">陪伴群友參與學習</div>
+          <p class="doing-text">協助對課程有興趣但不確定怎麼開始的朋友，了解報名方式、課程內容與參與流程。</p>
+        </div>
       </div>
-      <div class="stat-item reveal reveal-delay-3">
-        <div class="stat-num"><span data-count="120" data-suffix="+">0</span></div>
-        <div class="stat-label">公益活動場次</div>
+      <div class="doing-card reveal reveal-delay-3">
+        <div class="doing-num">04</div>
+        <div>
+          <div class="doing-title">持續安排公益行動</div>
+          <p class="doing-text">在課程之外，也會不定期安排公益參與的機會，讓學習不只是個人的事，也能成為回饋社會的力量。</p>
+        </div>
       </div>
     </div>
   </div>
@@ -891,45 +837,39 @@
 <section class="section" style="background:var(--cream);">
   <div class="container">
     <div class="section-header text-center">
-      <span class="label">Testimonials</span>
+      <span class="label">群友分享</span>
       <div class="divider"></div>
-      <h2 class="section-heading">學員真實心聲</h2>
-      <p class="section-sub">最好的評價，來自和我們一起走過的每一位夥伴。</p>
+      <h2 class="section-heading">群友分享</h2>
+      <p class="section-sub">來自真實參與者的感受，不加修飾。</p>
     </div>
     <div class="testimonial-grid">
       <div class="testimonial-card reveal">
-        <p class="testimonial-text">退休後以為生活會變得空洞，沒想到來這裡上課後，每天都充滿期待。不只學到新技能，還交到了好朋友！</p>
+        <p class="testimonial-text">原本只是想找一堂課試試看，沒想到上完之後覺得很放鬆，也認識了幾位可以聊天的朋友。</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">
-            <img src="https://images.unsplash.com/photo-1553514029-1318c9127859?w=100&q=80" alt="林阿姨">
-          </div>
+          <div class="testimonial-avatar">🙂</div>
           <div>
-            <div class="testimonial-name">林淑惠 阿姨</div>
-            <div class="testimonial-role">水彩班學員 · 65歲</div>
+            <div class="testimonial-name">課程參與者</div>
+            <div class="testimonial-role">手作體驗班</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-1">
-        <p class="testimonial-text">老師很有耐心，從不讓我們覺得跟不上。手機攝影課讓我學會用不同眼光看世界，現在每天都在拍照！</p>
+        <p class="testimonial-text">對熟齡朋友來說，有人把課程資訊整理好，真的會比較安心，也比較敢踏出第一步。</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">
-            <img src="https://images.unsplash.com/photo-1583195764036-a5f84b063937?w=100&q=80" alt="陳伯伯">
-          </div>
+          <div class="testimonial-avatar">😊</div>
           <div>
-            <div class="testimonial-name">陳明義 伯伯</div>
-            <div class="testimonial-role">攝影班學員 · 71歲</div>
+            <div class="testimonial-name">群友分享</div>
+            <div class="testimonial-role">第一次參加課程</div>
           </div>
         </div>
       </div>
       <div class="testimonial-card reveal reveal-delay-2">
-        <p class="testimonial-text">這裡的公益活動讓我覺得自己還能為社會做點事。共學與你不只是學習，是一個讓人找回價值感的地方。</p>
+        <p class="testimonial-text">參與公益活動後才發現，陪伴不是做很多大事，而是願意花時間和對方一起完成一件小事。</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">
-            <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=100&q=80" alt="張女士">
-          </div>
+          <div class="testimonial-avatar">🌿</div>
           <div>
-            <div class="testimonial-name">張美玲 女士</div>
-            <div class="testimonial-role">志工兼學員 · 58歲</div>
+            <div class="testimonial-name">公益活動志工</div>
+            <div class="testimonial-role">長期參與者</div>
           </div>
         </div>
       </div>
@@ -937,17 +877,17 @@
   </div>
 </section>
 
-<!-- ══ CTA Banner ══ -->
+<!-- ══ CTA ══ -->
 <section class="section cta-banner">
   <div class="container">
     <div class="cta-inner">
       <div class="cta-text reveal">
-        <h2>準備好開始您的共學之旅了嗎？</h2>
-        <p>加入我們，在溫暖的社群中，找到屬於您的精彩。</p>
+        <h2>想看看近期有哪些課程嗎？</h2>
+        <p>可以先從有興趣的課程開始了解，不用急著決定，慢慢看、慢慢問就好。</p>
       </div>
       <div class="reveal reveal-delay-1" style="display:flex;gap:14px;flex-wrap:wrap;">
-        <a href="courses.html" class="btn btn-primary">立即報名課程</a>
-        <a href="contact.html" class="btn btn-outline">預約免費諮詢</a>
+        <a href="courses.html" class="btn btn-primary">查看近期課程</a>
+        <a href="contact.html" class="btn btn-outline">LINE 詢問</a>
       </div>
     </div>
   </div>
@@ -959,38 +899,39 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <span class="logo-cn">共學與你</span>
-        <span class="logo-en">Learn Together With You</span>
-        <p>以公益為核心的終身學習平台，為熟齡族群提供溫暖、有品質的學習環境，在共學中找到生命的溫度與意義。</p>
+        <p>共學與你是一個整理熟齡課程、活動花絮與公益陪伴紀錄的社群。希望透過學習、交流與陪伴，讓生活多一點溫度，也多一點期待。</p>
       </div>
       <div class="footer-col">
         <h4>快速連結</h4>
         <a href="index.html">首頁</a>
         <a href="about.html">關於我們</a>
         <a href="courses.html">課程總覽</a>
-        <a href="gallery.html">精彩花絮</a>
+        <a href="gallery.html">活動花絮</a>
+        <a href="news.html">最新消息</a>
+        <a href="contact.html">聯絡我們</a>
       </div>
       <div class="footer-col">
-        <h4>服務項目</h4>
-        <a href="courses.html">藝術創作課程</a>
-        <a href="courses.html">數位科技課程</a>
-        <a href="courses.html">健康養生課程</a>
-        <a href="courses.html">人文歷史課程</a>
+        <h4>課程類型</h4>
+        <a href="courses.html">手作體驗</a>
+        <a href="courses.html">料理課程</a>
+        <a href="courses.html">健康活動</a>
+        <a href="courses.html">走讀導覽</a>
+        <a href="courses.html">公益活動</a>
       </div>
       <div class="footer-col footer-contact">
         <h4>聯絡資訊</h4>
-        <p><span>📍</span><span>台北市信義區和平東路三段1號</span></p>
-        <p><span>📞</span><span>02-2345-6789</span></p>
-        <p><span>✉️</span><span>hello@learntogether.tw</span></p>
-        <p><span>🕘</span><span>週一至週五 09:00–18:00</span></p>
+        <p><span>💬</span><span>LINE：待補</span></p>
+        <p><span>📞</span><span>電話：待補</span></p>
+        <p><span>✉️</span><span>Email：待補</span></p>
+        <p><span>📍</span><span>活動地點：依各課程公告為準</span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 共學與你 Learn Together With You. 版權所有。</p>
+      <p>© 2026 共學與你｜版權所有</p>
       <div class="social-links">
         <a href="#" aria-label="Facebook">f</a>
-        <a href="#" aria-label="LINE" style="font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:600;">LINE</a>
+        <a href="#" aria-label="LINE" style="font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:600;">LINE</a>
         <a href="#" aria-label="Instagram">◎</a>
-        <a href="#" aria-label="YouTube">▶</a>
       </div>
     </div>
   </div>
@@ -1007,22 +948,19 @@ tabs.forEach(tab => {
     tab.classList.add('active');
     const filter = tab.dataset.filter;
     items.forEach(item => {
-      const show = filter === 'all' || item.dataset.cat === filter;
-      item.style.display = show ? '' : 'none';
+      item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
     });
   });
 });
-
 // Lightbox
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 const lightboxCat = document.getElementById('lightboxCat');
 const lightboxTitle = document.getElementById('lightboxTitle');
-
 items.forEach(item => {
   item.addEventListener('click', () => {
     const img = item.querySelector('img');
-    lightboxImg.src = img.src.replace('w=600', 'w=1200').replace('w=700', 'w=1200');
+    lightboxImg.src = img.src.replace(/w=\d+/, 'w=1200');
     lightboxImg.alt = img.alt;
     lightboxCat.textContent = item.querySelector('.photo-cat')?.textContent || '';
     lightboxTitle.textContent = item.dataset.title || '';
@@ -1031,20 +969,13 @@ items.forEach(item => {
   });
 });
 document.getElementById('lightboxClose').addEventListener('click', () => {
-  lightbox.classList.remove('open');
-  document.body.style.overflow = '';
+  lightbox.classList.remove('open'); document.body.style.overflow = '';
 });
 lightbox.addEventListener('click', e => {
-  if (e.target === lightbox) {
-    lightbox.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  if (e.target === lightbox) { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
 });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    lightbox.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  if (e.key === 'Escape') { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
 });
 </script>
 </body>

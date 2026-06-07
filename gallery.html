@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>精彩花絮 — 共學與你</title>
+<title>活動花絮 — 共學與你</title>
 <link rel="stylesheet" href="css/global.css">
 <style>
 .gallery-filter {
@@ -13,34 +13,29 @@
   margin-bottom: 40px;
   align-items: center;
 }
-.gallery-filter .filter-label {
-  font-family: 'DM Sans', sans-serif;
+.filter-label {
   font-size: var(--fs-sm);
   color: var(--warm-mid);
-  margin-right: 6px;
+  margin-right: 4px;
 }
 .filter-tab {
-  padding: 8px 20px;
+  padding: 9px 20px;
   border-radius: 24px;
   border: 1.5px solid var(--border);
   background: white;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Noto Serif TC', serif;
   font-size: var(--fs-sm);
   color: var(--warm-mid);
   cursor: pointer;
   transition: all .25s;
+  min-height: 44px;
 }
 .filter-tab.active, .filter-tab:hover {
   background: var(--gold);
   border-color: var(--gold);
   color: white;
 }
-
-/* Full masonry */
-.full-photo-grid {
-  columns: 4;
-  column-gap: 14px;
-}
+.full-photo-grid { columns: 4; column-gap: 14px; }
 .full-photo-item {
   break-inside: avoid;
   margin-bottom: 14px;
@@ -69,10 +64,8 @@
 }
 .full-photo-item:hover .photo-overlay { opacity: 1; }
 .photo-overlay .photo-cat {
-  font-family: 'DM Sans', sans-serif;
-  font-size: .65rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  font-family: 'Noto Serif TC', serif;
+  font-size: .72rem;
   color: var(--gold);
   margin-bottom: 5px;
 }
@@ -83,30 +76,6 @@
   color: white;
   line-height: 1.4;
 }
-
-/* Year tabs */
-.year-tabs {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-}
-.year-tab {
-  padding: 5px 16px;
-  border-radius: 20px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: var(--fs-xs);
-  font-weight: 500;
-  letter-spacing: .08em;
-  border: 1px solid var(--border);
-  background: white;
-  color: var(--warm-mid);
-  cursor: pointer;
-  transition: all .2s;
-}
-.year-tab.active { background: var(--bark); border-color: var(--bark); color: white; }
-
-/* Lightbox */
 .lightbox {
   position: fixed; inset: 0;
   background: rgba(30,18,10,.93);
@@ -136,7 +105,7 @@
 .lightbox-close {
   position: fixed;
   top: 20px; right: 20px;
-  width: 44px; height: 44px;
+  width: 48px; height: 48px;
   background: rgba(0,0,0,.5);
   border: none; border-radius: 50%;
   color: white; font-size: 1.2rem;
@@ -154,15 +123,12 @@
 
 <nav id="navbar">
   <div class="container nav-inner">
-    <a href="index.html" class="nav-logo">
-      <span class="logo-cn">共學與你</span>
-      <span class="logo-en">Learn Together With You</span>
-    </a>
+    <a href="index.html" class="nav-logo"><span class="logo-cn">共學與你</span></a>
     <ul class="nav-links">
       <li><a href="index.html">首頁</a></li>
       <li><a href="about.html">關於我們</a></li>
       <li><a href="courses.html">課程總覽</a></li>
-      <li><a href="gallery.html" class="active">精彩花絮</a></li>
+      <li><a href="gallery.html" class="active">活動花絮</a></li>
       <li><a href="news.html">最新消息</a></li>
       <li><a href="contact.html" class="nav-cta">聯絡我們</a></li>
     </ul>
@@ -171,113 +137,107 @@
 </nav>
 <nav class="mobile-menu">
   <a href="index.html">首頁</a><a href="about.html">關於我們</a>
-  <a href="courses.html">課程總覽</a><a href="gallery.html">精彩花絮</a>
+  <a href="courses.html">課程總覽</a><a href="gallery.html">活動花絮</a>
   <a href="news.html">最新消息</a><a href="contact.html">聯絡我們</a>
 </nav>
 
 <div class="page-hero">
   <div class="container">
-    <span class="label">Photo Gallery</span>
-    <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:12px;">精彩花絮影像牆</h1>
-    <p class="section-sub">每一幅影像，都是一段真實的共學故事。課程花絮、公益活動、學員互動與作品紀錄，盡在其中。</p>
-    <nav class="breadcrumb"><a href="index.html">首頁</a><span>›</span><span>精彩花絮</span></nav>
+    <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:0;">活動花絮</h1>
+    <p class="section-sub">這裡整理大家一起上課、交流、手作與參與公益的片段，讓每一次活動都能被好好記錄下來。</p>
+    <nav class="breadcrumb"><a href="index.html">首頁</a><span>›</span><span>活動花絮</span></nav>
   </div>
 </div>
 
 <section class="section" style="background:var(--cream);">
   <div class="container">
-
     <div class="gallery-filter">
-      <span class="filter-label">篩選類別：</span>
+      <span class="filter-label">篩選：</span>
       <button class="filter-tab active" data-filter="all">全部</button>
       <button class="filter-tab" data-filter="course">課程花絮</button>
-      <button class="filter-tab" data-filter="charity">公益活動</button>
-      <button class="filter-tab" data-filter="interaction">學員互動</button>
-      <button class="filter-tab" data-filter="work">作品紀錄</button>
+      <button class="filter-tab" data-filter="charity">公益紀錄</button>
+      <button class="filter-tab" data-filter="interaction">交流互動</button>
+      <button class="filter-tab" data-filter="work">學員作品</button>
     </div>
 
     <div class="full-photo-grid" id="galleryGrid">
-
-      <div class="full-photo-item" data-cat="course" data-title="水彩風景課程｜2024春季班">
-        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=700&q=80" alt="水彩課" loading="lazy">
-        <div class="photo-overlay"><span class="photo-cat">課程花絮</span><span class="photo-title">水彩風景課程｜2024春季班</span></div>
+      <div class="full-photo-item" data-cat="course" data-title="手作課程花絮">
+        <img src="https://images.unsplash.com/photo-1460661419201-fd4gecdf8a8b?w=700&q=80" alt="手作課程" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=700&q=80'">
+        <div class="photo-overlay"><span class="photo-cat">課程花絮</span><span class="photo-title">手作課程花絮</span></div>
       </div>
-      <div class="full-photo-item" data-cat="interaction" data-title="學員課後午茶交流">
-        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80" alt="學員交流" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%;">
-        <div class="photo-overlay"><span class="photo-cat">學員互動</span><span class="photo-title">學員課後午茶交流</span></div>
+      <div class="full-photo-item" data-cat="interaction" data-title="課後交流時光">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=80" alt="熟齡朋友交流" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%;">
+        <div class="photo-overlay"><span class="photo-cat">交流互動</span><span class="photo-title">課後交流時光</span></div>
       </div>
-      <div class="full-photo-item" data-cat="work" data-title="手工皂作品成果展">
-        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=700&q=80" alt="手工皂" loading="lazy">
-        <div class="photo-overlay"><span class="photo-cat">作品紀錄</span><span class="photo-title">手工皂作品成果展</span></div>
+      <div class="full-photo-item" data-cat="work" data-title="學員作品分享">
+        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=700&q=80" alt="學員作品" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cat">學員作品</span><span class="photo-title">學員作品分享</span></div>
       </div>
-      <div class="full-photo-item" data-cat="charity" data-title="社區長者關懷公益探訪">
-        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=700&q=80" alt="公益活動" loading="lazy" style="aspect-ratio:3/4;object-fit:cover;width:100%;">
-        <div class="photo-overlay"><span class="photo-cat">公益活動</span><span class="photo-title">社區長者關懷公益探訪</span></div>
+      <div class="full-photo-item" data-cat="charity" data-title="公益陪伴紀錄">
+        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=700&q=80" alt="公益活動紀錄" loading="lazy" style="aspect-ratio:3/4;object-fit:cover;width:100%;">
+        <div class="photo-overlay"><span class="photo-cat">公益紀錄</span><span class="photo-title">公益陪伴紀錄</span></div>
       </div>
-      <div class="full-photo-item" data-cat="course" data-title="書法人文課程｜秋季班">
-        <img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?w=700&q=80" alt="書法課" loading="lazy">
-        <div class="photo-overlay"><span class="photo-cat">課程花絮</span><span class="photo-title">書法人文課程｜秋季班</span></div>
+      <div class="full-photo-item" data-cat="course" data-title="熟齡課程現場">
+        <img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?w=700&q=80" alt="熟齡課程現場" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cat">課程花絮</span><span class="photo-title">熟齡課程現場</span></div>
       </div>
-      <div class="full-photo-item" data-cat="work" data-title="陶藝創作班期末作品展">
-        <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=700&q=80" alt="陶藝" loading="lazy">
-        <div class="photo-overlay"><span class="photo-cat">作品紀錄</span><span class="photo-title">陶藝創作班期末作品展</span></div>
+      <div class="full-photo-item" data-cat="work" data-title="學員作品分享">
+        <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=700&q=80" alt="學員作品" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cat">學員作品</span><span class="photo-title">學員作品分享</span></div>
       </div>
-      <div class="full-photo-item" data-cat="interaction" data-title="結業典禮暨師生合影">
-        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=700&q=80" alt="結業典禮" loading="lazy">
-        <div class="photo-overlay"><span class="photo-cat">學員互動</span><span class="photo-title">結業典禮暨師生合影</span></div>
+      <div class="full-photo-item" data-cat="interaction" data-title="活動合照">
+        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=700&q=80" alt="活動合照" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cat">交流互動</span><span class="photo-title">活動合照</span></div>
       </div>
-      <div class="full-photo-item" data-cat="charity" data-title="環保種樹公益行動">
-        <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=700&q=80" alt="種樹" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%;">
-        <div class="photo-overlay"><span class="photo-cat">公益活動</span><span class="photo-title">環保種樹公益行動</span></div>
+      <div class="full-photo-item" data-cat="charity" data-title="志工活動紀錄">
+        <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=700&q=80" alt="志工活動紀錄" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%;">
+        <div class="photo-overlay"><span class="photo-cat">公益紀錄</span><span class="photo-title">志工活動紀錄</span></div>
       </div>
-      <div class="full-photo-item" data-cat="course" data-title="手機攝影美學課程實況">
-        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=700&q=80" alt="攝影課" loading="lazy">
-        <div class="photo-overlay"><span class="photo-cat">課程花絮</span><span class="photo-title">手機攝影美學課程實況</span></div>
+      <div class="full-photo-item" data-cat="course" data-title="生活學習紀錄">
+        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=700&q=80" alt="生活學習紀錄" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cat">課程花絮</span><span class="photo-title">生活學習紀錄</span></div>
       </div>
-      <div class="full-photo-item" data-cat="work" data-title="學員攝影作品聯展">
-        <img src="https://images.unsplash.com/photo-1495745966610-2a67f2297e5e?w=700&q=80" alt="攝影展" loading="lazy" style="aspect-ratio:3/4;object-fit:cover;width:100%;">
-        <div class="photo-overlay"><span class="photo-cat">作品紀錄</span><span class="photo-title">學員攝影作品聯展</span></div>
+      <div class="full-photo-item" data-cat="work" data-title="學員作品分享">
+        <img src="https://images.unsplash.com/photo-1495745966610-2a67f2297e5e?w=700&q=80" alt="學員作品" loading="lazy" style="aspect-ratio:3/4;object-fit:cover;width:100%;">
+        <div class="photo-overlay"><span class="photo-cat">學員作品</span><span class="photo-title">學員作品分享</span></div>
       </div>
-      <div class="full-photo-item" data-cat="interaction" data-title="新春圍爐共學迎新年">
-        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=700&q=80" alt="新春活動" loading="lazy">
-        <div class="photo-overlay"><span class="photo-cat">學員互動</span><span class="photo-title">新春圍爐共學迎新年</span></div>
+      <div class="full-photo-item" data-cat="interaction" data-title="課後交流時光">
+        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=700&q=80" alt="課後交流" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cat">交流互動</span><span class="photo-title">課後交流時光</span></div>
       </div>
-      <div class="full-photo-item" data-cat="charity" data-title="偏鄉兒童夏令營志工服務">
-        <img src="https://images.unsplash.com/photo-1564144006388-615f4d2e7e05?w=700&q=80" alt="夏令營志工" loading="lazy">
-        <div class="photo-overlay"><span class="photo-cat">公益活動</span><span class="photo-title">偏鄉兒童夏令營志工服務</span></div>
+      <div class="full-photo-item" data-cat="charity" data-title="公益陪伴紀錄">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=700&q=80" alt="公益陪伴紀錄" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cat">公益紀錄</span><span class="photo-title">公益陪伴紀錄</span></div>
       </div>
-      <div class="full-photo-item" data-cat="course" data-title="瑜伽養生班戶外課程">
-        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&q=80" alt="瑜伽課" loading="lazy">
-        <div class="photo-overlay"><span class="photo-cat">課程花絮</span><span class="photo-title">瑜伽養生班戶外課程</span></div>
+      <div class="full-photo-item" data-cat="course" data-title="課程花絮">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&q=80" alt="課程花絮" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cat">課程花絮</span><span class="photo-title">課程花絮</span></div>
       </div>
-      <div class="full-photo-item" data-cat="work" data-title="書法班精選作品展示">
-        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=700&q=80" alt="書法作品" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%;">
-        <div class="photo-overlay"><span class="photo-cat">作品紀錄</span><span class="photo-title">書法班精選作品展示</span></div>
+      <div class="full-photo-item" data-cat="work" data-title="學員作品分享">
+        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=700&q=80" alt="學員作品" loading="lazy" style="aspect-ratio:4/5;object-fit:cover;width:100%;">
+        <div class="photo-overlay"><span class="photo-cat">學員作品</span><span class="photo-title">學員作品分享</span></div>
       </div>
-      <div class="full-photo-item" data-cat="interaction" data-title="年度學員成果發表會">
-        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=700&q=80" alt="成果展" loading="lazy">
-        <div class="photo-overlay"><span class="photo-cat">學員互動</span><span class="photo-title">年度學員成果發表會</span></div>
+      <div class="full-photo-item" data-cat="interaction" data-title="活動合照">
+        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=700&q=80" alt="活動合照" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cat">交流互動</span><span class="photo-title">活動合照</span></div>
       </div>
-      <div class="full-photo-item" data-cat="charity" data-title="食物銀行志工服務日">
-        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=700&q=80" alt="志工" loading="lazy">
-        <div class="photo-overlay"><span class="photo-cat">公益活動</span><span class="photo-title">食物銀行志工服務日</span></div>
+      <div class="full-photo-item" data-cat="charity" data-title="志工活動紀錄">
+        <img src="https://images.unsplash.com/photo-1564144006388-615f4d2e7e05?w=700&q=80" alt="志工活動紀錄" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cat">公益紀錄</span><span class="photo-title">志工活動紀錄</span></div>
       </div>
-
-    </div><!-- end grid -->
-
-    <div style="text-align:center;margin-top:48px;">
-      <a href="contact.html" class="btn btn-outline" style="font-size:var(--fs-md);padding:14px 36px;">參加下一次活動，留下您的故事 →</a>
     </div>
 
+    <div style="text-align:center;margin-top:48px;">
+      <a href="contact.html" class="btn btn-outline" style="font-size:var(--fs-md);padding:14px 36px;">歡迎一起參與下一次活動 →</a>
+    </div>
   </div>
 </section>
 
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox">
   <div class="lightbox-inner">
     <img id="lightboxImg" src="" alt="">
     <div class="lightbox-caption">
-      <span class="photo-cat" id="lightboxCat" style="font-family:'DM Sans',sans-serif;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px;"></span>
+      <span id="lightboxCat" style="font-size:.72rem;color:var(--gold);display:block;margin-bottom:4px;"></span>
       <div id="lightboxTitle" style="color:white;font-size:1rem;font-family:'Noto Serif TC',serif;"></div>
     </div>
   </div>
@@ -289,39 +249,40 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <span class="logo-cn">共學與你</span>
-        <span class="logo-en">Learn Together With You</span>
-        <p>以公益為核心的終身學習平台，為熟齡族群提供溫暖、有品質的學習環境。</p>
+        <p>共學與你是一個整理熟齡課程、活動花絮與公益陪伴紀錄的社群。希望透過學習、交流與陪伴，讓生活多一點溫度，也多一點期待。</p>
       </div>
       <div class="footer-col">
         <h4>快速連結</h4>
         <a href="index.html">首頁</a><a href="about.html">關於我們</a>
-        <a href="courses.html">課程總覽</a><a href="gallery.html">精彩花絮</a>
+        <a href="courses.html">課程總覽</a><a href="gallery.html">活動花絮</a>
+        <a href="news.html">最新消息</a><a href="contact.html">聯絡我們</a>
       </div>
       <div class="footer-col">
-        <h4>服務項目</h4>
-        <a href="courses.html">藝術創作課程</a><a href="courses.html">數位科技課程</a>
-        <a href="courses.html">健康養生課程</a><a href="courses.html">人文歷史課程</a>
+        <h4>課程類型</h4>
+        <a href="courses.html">手作體驗</a><a href="courses.html">料理課程</a>
+        <a href="courses.html">健康活動</a><a href="courses.html">走讀導覽</a>
+        <a href="courses.html">公益活動</a>
       </div>
       <div class="footer-col footer-contact">
         <h4>聯絡資訊</h4>
-        <p><span>📍</span><span>台北市信義區和平東路三段1號</span></p>
-        <p><span>📞</span><span>02-2345-6789</span></p>
-        <p><span>✉️</span><span>hello@learntogether.tw</span></p>
+        <p><span>💬</span><span>LINE：待補</span></p>
+        <p><span>📞</span><span>電話：待補</span></p>
+        <p><span>✉️</span><span>Email：待補</span></p>
+        <p><span>📍</span><span>活動地點：依各課程公告為準</span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 共學與你 Learn Together With You. 版權所有。</p>
+      <p>© 2026 共學與你｜版權所有</p>
       <div class="social-links">
-        <a href="#">f</a><a href="#" style="font-size:.65rem;font-weight:600;">LINE</a>
-        <a href="#">◎</a><a href="#">▶</a>
+        <a href="#">f</a>
+        <a href="#" style="font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:600;">LINE</a>
+        <a href="#">◎</a>
       </div>
     </div>
   </div>
 </footer>
-
 <script src="js/nav.js"></script>
 <script>
-// Filter
 document.querySelectorAll('.filter-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
@@ -332,13 +293,10 @@ document.querySelectorAll('.filter-tab').forEach(tab => {
     });
   });
 });
-
-// Lightbox
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 const lightboxCat = document.getElementById('lightboxCat');
 const lightboxTitle = document.getElementById('lightboxTitle');
-
 document.querySelectorAll('.full-photo-item').forEach(item => {
   item.addEventListener('click', () => {
     const img = item.querySelector('img');
@@ -350,13 +308,10 @@ document.querySelectorAll('.full-photo-item').forEach(item => {
     document.body.style.overflow = 'hidden';
   });
 });
-document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-function closeLightbox() {
-  lightbox.classList.remove('open');
-  document.body.style.overflow = '';
-}
+document.getElementById('lightboxClose').addEventListener('click', closeLB);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLB(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+function closeLB() { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
 </script>
 </body>
 </html>

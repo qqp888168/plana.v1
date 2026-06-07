@@ -19,60 +19,28 @@
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 240px 1fr;
   transition: transform .3s, box-shadow .3s;
 }
 .news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.nc-img {
-  aspect-ratio: 4/3;
-  overflow: hidden;
-  background: var(--ivory);
-}
+.nc-img { aspect-ratio: 4/3; overflow: hidden; background: var(--ivory); }
 .nc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
 .news-card:hover .nc-img img { transform: scale(1.05); }
-.nc-body {
-  padding: 28px 32px;
-  display: flex;
-  flex-direction: column;
-}
-.nc-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.nc-date {
-  font-family: 'DM Sans', sans-serif;
-  font-size: var(--fs-xs);
-  color: var(--warm-mid);
-}
+.nc-body { padding: 28px 28px; display: flex; flex-direction: column; }
+.nc-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.nc-date { font-size: var(--fs-xs); color: var(--warm-mid); font-family: 'DM Sans', sans-serif; }
 .nc-title {
   font-family: 'Noto Serif TC', serif;
-  font-size: 1.12rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--bark);
   margin-bottom: 12px;
-  line-height: 1.45;
+  line-height: 1.5;
 }
-.nc-excerpt {
-  font-size: var(--fs-sm);
-  color: var(--warm-mid);
-  line-height: 1.8;
-  flex: 1;
-  margin-bottom: 20px;
-}
-.nc-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.nc-author {
-  font-family: 'DM Sans', sans-serif;
-  font-size: var(--fs-xs);
-  color: var(--warm-mid);
-}
+.nc-excerpt { font-size: var(--fs-sm); color: var(--warm-mid); line-height: 1.9; flex: 1; margin-bottom: 18px; }
+.nc-foot { display: flex; align-items: center; justify-content: space-between; }
+.nc-author { font-size: var(--fs-xs); color: var(--warm-mid); }
 
-/* Sidebar */
 .sidebar-card {
   background: white;
   border-radius: 10px;
@@ -88,11 +56,10 @@
   color: var(--bark);
   margin-bottom: 16px;
 }
+.sidebar-card p { font-size: var(--fs-sm); color: var(--warm-mid); line-height: 1.85; margin-bottom: 10px; }
 .cat-list { display: flex; flex-direction: column; gap: 4px; }
 .cat-list a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   padding: 10px 12px;
   border-radius: 6px;
   font-size: var(--fs-sm);
@@ -100,54 +67,6 @@
   transition: background .2s, color .2s;
 }
 .cat-list a:hover { background: var(--ivory); color: var(--gold-dk); }
-.cat-list a span {
-  font-family: 'DM Sans', sans-serif;
-  font-size: .7rem;
-  background: var(--ivory);
-  color: var(--warm-mid);
-  padding: 2px 8px;
-  border-radius: 10px;
-}
-.event-list { display: flex; flex-direction: column; gap: 14px; }
-.event-item {
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 12px;
-  align-items: start;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--border);
-}
-.event-item:last-child { border-bottom: none; padding-bottom: 0; }
-.event-date-box {
-  background: var(--gold);
-  color: white;
-  border-radius: 6px;
-  text-align: center;
-  padding: 6px 4px;
-}
-.event-month {
-  font-family: 'DM Sans', sans-serif;
-  font-size: .58rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-.event-day {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.2rem;
-  line-height: 1;
-}
-.event-name {
-  font-size: var(--fs-sm);
-  color: var(--charcoal);
-  line-height: 1.5;
-  font-weight: 500;
-}
-.event-loc {
-  font-family: 'DM Sans', sans-serif;
-  font-size: .7rem;
-  color: var(--warm-mid);
-  margin-top: 3px;
-}
 
 @media (max-width: 1100px) { .news-layout { grid-template-columns: 1fr; } }
 @media (max-width: 640px) {
@@ -161,15 +80,12 @@
 
 <nav id="navbar">
   <div class="container nav-inner">
-    <a href="index.html" class="nav-logo">
-      <span class="logo-cn">共學與你</span>
-      <span class="logo-en">Learn Together With You</span>
-    </a>
+    <a href="index.html" class="nav-logo"><span class="logo-cn">共學與你</span></a>
     <ul class="nav-links">
       <li><a href="index.html">首頁</a></li>
       <li><a href="about.html">關於我們</a></li>
       <li><a href="courses.html">課程總覽</a></li>
-      <li><a href="gallery.html">精彩花絮</a></li>
+      <li><a href="gallery.html">活動花絮</a></li>
       <li><a href="news.html" class="active">最新消息</a></li>
       <li><a href="contact.html" class="nav-cta">聯絡我們</a></li>
     </ul>
@@ -178,15 +94,14 @@
 </nav>
 <nav class="mobile-menu">
   <a href="index.html">首頁</a><a href="about.html">關於我們</a>
-  <a href="courses.html">課程總覽</a><a href="gallery.html">精彩花絮</a>
+  <a href="courses.html">課程總覽</a><a href="gallery.html">活動花絮</a>
   <a href="news.html">最新消息</a><a href="contact.html">聯絡我們</a>
 </nav>
 
 <div class="page-hero">
   <div class="container">
-    <span class="label">Latest News</span>
-    <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:12px;">最新消息</h1>
-    <p class="section-sub">課程開班公告、公益活動資訊，以及共學社群的最新動態。</p>
+    <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:0;">最新消息</h1>
+    <p class="section-sub">這裡整理課程公告、活動更新、公益紀錄與社群通知，方便大家快速查看最新資訊。</p>
     <nav class="breadcrumb"><a href="index.html">首頁</a><span>›</span><span>最新消息</span></nav>
   </div>
 </div>
@@ -194,59 +109,40 @@
 <section class="section" style="background:var(--cream);">
   <div class="container">
     <div class="news-layout">
-      <!-- News List -->
       <div>
         <div class="news-list-full">
 
           <article class="news-card reveal">
             <div class="nc-img">
-              <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&q=80" alt="水彩班招生">
+              <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&q=80" alt="課程資訊整理中">
             </div>
             <div class="nc-body">
               <div class="nc-meta">
-                <span class="badge badge-gold">開班公告</span>
-                <span class="nc-date">2024 年 8 月 15 日</span>
+                <span class="badge badge-gold">課程公告</span>
+                <span class="nc-date">待補</span>
               </div>
-              <div class="nc-title">【秋季班招生】水彩風景畫入門班正式開放報名</div>
-              <p class="nc-excerpt">2024年秋季水彩班即日起開放報名！本期課程將以台灣四季風景為題材，由資深水彩藝術家陳美惠老師親自帶領，從最基礎的工具認識開始，適合完全零基礎的初學者。每班限額12人，名額有限，請把握機會。</p>
+              <div class="nc-title">近期課程資訊整理中</div>
+              <p class="nc-excerpt">目前正在整理近期適合熟齡朋友參與的課程，包含手作、料理、健康與走讀等類型。若有特定想了解的課程，歡迎透過 LINE 詢問，我們會盡量提供資訊。</p>
               <div class="nc-foot">
-                <div class="nc-author">共學與你 編輯部</div>
-                <a href="contact.html" class="btn btn-primary" style="padding:9px 18px;font-size:.85rem;">立即報名</a>
+                <div class="nc-author">共學與你</div>
+                <a href="contact.html" class="btn btn-primary" style="padding:9px 18px;font-size:.9rem;">LINE 詢問</a>
               </div>
             </div>
           </article>
 
           <article class="news-card reveal">
             <div class="nc-img">
-              <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" alt="公益探訪">
+              <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" alt="公益紀錄整理中">
             </div>
             <div class="nc-body">
               <div class="nc-meta">
-                <span class="badge badge-rust">公益活動</span>
-                <span class="nc-date">2024 年 8 月 10 日</span>
+                <span class="badge badge-rust">公益紀錄</span>
+                <span class="nc-date">待補</span>
               </div>
-              <div class="nc-title">中秋前夕：社區長者關懷探訪活動徵求志工</div>
-              <p class="nc-excerpt">中秋佳節將至，共學與你計畫於9月中旬舉辦「社區長者關懷探訪」公益活動，攜帶手工月餅與水果，走訪附近獨居長者家庭。誠摯邀請對公益服務有興趣的學員與一般民眾共同參與，讓節日的溫暖傳遞到每個角落。</p>
+              <div class="nc-title">公益陪伴紀錄整理中</div>
+              <p class="nc-excerpt">過去幾次公益陪伴活動的照片與紀錄正在整理中，之後會陸續更新到活動花絮頁面，讓沒有參與到的朋友也能感受現場的溫度。</p>
               <div class="nc-foot">
-                <div class="nc-author">公益業務部</div>
-                <a href="contact.html" class="btn btn-outline" style="padding:9px 18px;font-size:.85rem;">報名志工</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="news-card reveal">
-            <div class="nc-img">
-              <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=80" alt="成果展">
-            </div>
-            <div class="nc-body">
-              <div class="nc-meta">
-                <span class="badge badge-sage">活動紀錄</span>
-                <span class="nc-date">2024 年 7 月 28 日</span>
-              </div>
-              <div class="nc-title">2024年度學員成果展圓滿落幕，精彩回顧</div>
-              <p class="nc-excerpt">歷時三天的年度學員成果展於7月28日圓滿結束，共展出超過200件來自各班學員的作品，涵蓋水彩、書法、陶藝、手工皂與攝影等多種媒材。現場吸引超過500位來賓參觀，許多學員親自到場為展出作品解說，展現出自信與成就感。</p>
-              <div class="nc-foot">
-                <div class="nc-author">課程總監 陳志遠</div>
+                <div class="nc-author">共學與你</div>
                 <a href="gallery.html" class="btn btn-ghost">查看花絮</a>
               </div>
             </div>
@@ -254,18 +150,36 @@
 
           <article class="news-card reveal">
             <div class="nc-img">
-              <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80" alt="LINE課程">
+              <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=80" alt="活動花絮更新">
             </div>
             <div class="nc-body">
               <div class="nc-meta">
-                <span class="badge badge-gold">開班公告</span>
-                <span class="nc-date">2024 年 7 月 20 日</span>
+                <span class="badge badge-sage">活動更新</span>
+                <span class="nc-date">待補</span>
               </div>
-              <div class="nc-title">新課程上線！「智慧生活 LINE 應用班」開放報名</div>
-              <p class="nc-excerpt">為協助熟齡族群跨越數位落差，共學與你全新推出「智慧生活 LINE 應用班」，課程內容涵蓋LINE基本操作、視訊通話、群組管理，以及如何識別網路詐騙、保護個人資料安全。每週三下午開課，適合數位初學者。</p>
+              <div class="nc-title">活動花絮將陸續更新</div>
+              <p class="nc-excerpt">每一次課程與活動結束後，我們都會整理現場照片，慢慢放到花絮頁面裡。如果你有在某次活動拍到好照片，也歡迎透過 LINE 分享給我們。</p>
               <div class="nc-foot">
-                <div class="nc-author">數位學習顧問 張建國</div>
-                <a href="contact.html" class="btn btn-primary" style="padding:9px 18px;font-size:.85rem;">立即報名</a>
+                <div class="nc-author">共學與你</div>
+                <a href="gallery.html" class="btn btn-ghost">查看花絮</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-card reveal">
+            <div class="nc-img">
+              <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80" alt="LINE 詢問">
+            </div>
+            <div class="nc-body">
+              <div class="nc-meta">
+                <span class="badge badge-gold">社群通知</span>
+                <span class="nc-date">待補</span>
+              </div>
+              <div class="nc-title">歡迎透過 LINE 詢問課程與活動</div>
+              <p class="nc-excerpt">如果對課程有任何疑問，或想了解近期有哪些活動可以參與，都歡迎直接透過 LINE 詢問。不用客氣，慢慢問沒關係，我們會盡量回覆說明。</p>
+              <div class="nc-foot">
+                <div class="nc-author">共學與你</div>
+                <a href="contact.html" class="btn btn-primary" style="padding:9px 18px;font-size:.9rem;">前往聯絡</a>
               </div>
             </div>
           </article>
@@ -278,65 +192,23 @@
         <div class="sidebar-card reveal">
           <h3>📂 消息分類</h3>
           <div class="cat-list">
-            <a href="#">開班公告 <span>12</span></a>
-            <a href="#">公益活動 <span>8</span></a>
-            <a href="#">活動紀錄 <span>15</span></a>
-            <a href="#">獎項榮譽 <span>4</span></a>
-            <a href="#">社群動態 <span>9</span></a>
+            <a href="#">課程公告</a>
+            <a href="#">活動更新</a>
+            <a href="#">公益紀錄</a>
+            <a href="#">社群通知</a>
           </div>
         </div>
 
         <div class="sidebar-card reveal">
-          <h3>🗓 近期活動行事曆</h3>
-          <div class="event-list">
-            <div class="event-item">
-              <div class="event-date-box">
-                <div class="event-month">SEP</div>
-                <div class="event-day">14</div>
-              </div>
-              <div>
-                <div class="event-name">社區長者關懷探訪</div>
-                <div class="event-loc">📍 信義社區活動中心</div>
-              </div>
-            </div>
-            <div class="event-item">
-              <div class="event-date-box">
-                <div class="event-month">SEP</div>
-                <div class="event-day">21</div>
-              </div>
-              <div>
-                <div class="event-name">水彩班秋季開課</div>
-                <div class="event-loc">📍 共學與你教學中心</div>
-              </div>
-            </div>
-            <div class="event-item">
-              <div class="event-date-box">
-                <div class="event-month">OCT</div>
-                <div class="event-day">05</div>
-              </div>
-              <div>
-                <div class="event-name">書法班新一期招生說明會</div>
-                <div class="event-loc">📍 共學與你教學中心</div>
-              </div>
-            </div>
-            <div class="event-item">
-              <div class="event-date-box">
-                <div class="event-month">OCT</div>
-                <div class="event-day">19</div>
-              </div>
-              <div>
-                <div class="event-name">年度公益市集參與</div>
-                <div class="event-loc">📍 大安森林公園</div>
-              </div>
-            </div>
-          </div>
+          <h3>🗓 近期活動</h3>
+          <p>近期活動將依社群公告更新，實際日期與地點請以公告為準。</p>
+          <p>歡迎透過 LINE 訂閱消息，第一時間收到課程與活動資訊。</p>
         </div>
 
         <div class="sidebar-card reveal" style="background:var(--ivory);">
-          <h3>📬 訂閱電子報</h3>
-          <p style="font-size:var(--fs-sm);color:var(--warm-mid);line-height:1.7;margin-bottom:16px;">第一時間收到課程開班消息與公益活動通知。</p>
-          <input type="email" placeholder="輸入您的電子郵件" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:6px;font-size:var(--fs-sm);font-family:'DM Sans',sans-serif;outline:none;margin-bottom:10px;background:white;">
-          <button onclick="alert('感謝訂閱！')" class="btn btn-primary" style="width:100%;justify-content:center;">立即訂閱</button>
+          <h3>📬 想收到最新消息？</h3>
+          <p>加入 LINE 社群，第一時間收到課程開班消息與活動通知。不用擔心被打擾，我們只會在有新消息時才通知。</p>
+          <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">前往聯絡頁面</a>
         </div>
       </aside>
     </div>
@@ -348,36 +220,38 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <span class="logo-cn">共學與你</span>
-        <span class="logo-en">Learn Together With You</span>
-        <p>以公益為核心的終身學習平台，為熟齡族群提供溫暖、有品質的學習環境。</p>
+        <p>共學與你是一個整理熟齡課程、活動花絮與公益陪伴紀錄的社群。希望透過學習、交流與陪伴，讓生活多一點溫度，也多一點期待。</p>
       </div>
       <div class="footer-col">
         <h4>快速連結</h4>
         <a href="index.html">首頁</a><a href="about.html">關於我們</a>
-        <a href="courses.html">課程總覽</a><a href="gallery.html">精彩花絮</a>
+        <a href="courses.html">課程總覽</a><a href="gallery.html">活動花絮</a>
+        <a href="news.html">最新消息</a><a href="contact.html">聯絡我們</a>
       </div>
       <div class="footer-col">
-        <h4>服務項目</h4>
-        <a href="courses.html">藝術創作課程</a><a href="courses.html">數位科技課程</a>
-        <a href="courses.html">健康養生課程</a><a href="courses.html">人文歷史課程</a>
+        <h4>課程類型</h4>
+        <a href="courses.html">手作體驗</a><a href="courses.html">料理課程</a>
+        <a href="courses.html">健康活動</a><a href="courses.html">走讀導覽</a>
+        <a href="courses.html">公益活動</a>
       </div>
       <div class="footer-col footer-contact">
         <h4>聯絡資訊</h4>
-        <p><span>📍</span><span>台北市信義區和平東路三段1號</span></p>
-        <p><span>📞</span><span>02-2345-6789</span></p>
-        <p><span>✉️</span><span>hello@learntogether.tw</span></p>
+        <p><span>💬</span><span>LINE：待補</span></p>
+        <p><span>📞</span><span>電話：待補</span></p>
+        <p><span>✉️</span><span>Email：待補</span></p>
+        <p><span>📍</span><span>活動地點：依各課程公告為準</span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 共學與你 Learn Together With You. 版權所有。</p>
+      <p>© 2026 共學與你｜版權所有</p>
       <div class="social-links">
-        <a href="#">f</a><a href="#" style="font-size:.65rem;font-weight:600;">LINE</a>
-        <a href="#">◎</a><a href="#">▶</a>
+        <a href="#">f</a>
+        <a href="#" style="font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:600;">LINE</a>
+        <a href="#">◎</a>
       </div>
     </div>
   </div>
 </footer>
-
 <script src="js/nav.js"></script>
 </body>
 </html>

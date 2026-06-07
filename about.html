@@ -6,23 +6,21 @@
 <title>關於我們 — 共學與你</title>
 <link rel="stylesheet" href="css/global.css">
 <style>
-.story-grid {
+.about-intro-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 72px;
   align-items: center;
 }
-.story-img-wrap {
-  position: relative;
-}
-.story-img-main {
+.about-img-wrap { position: relative; }
+.about-img-main {
   width: 100%;
   aspect-ratio: 4/5;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: var(--shadow-lg);
 }
-.story-img-accent {
+.about-img-accent {
   position: absolute;
   width: 55%;
   aspect-ratio: 4/3;
@@ -31,45 +29,23 @@
   border: 4px solid var(--cream);
   box-shadow: var(--shadow-md);
   bottom: -32px;
-  right: -32px;
+  right: -28px;
 }
-.story-badge {
-  position: absolute;
-  top: 28px; left: -24px;
-  background: var(--gold);
-  color: white;
-  padding: 16px 20px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: var(--shadow-md);
-}
-.story-badge .num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 2rem;
-  line-height: 1;
-  display: block;
-}
-.story-badge .txt {
-  font-family: 'DM Sans', sans-serif;
-  font-size: .7rem;
-  letter-spacing: .1em;
-  display: block;
-  margin-top: 4px;
-}
-.story-text h3 {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--bark);
-  margin-bottom: 16px;
-  padding-left: 16px;
-  border-left: 3px solid var(--gold);
-}
-.story-text p {
+.about-text p {
   font-size: var(--fs-lg);
   color: var(--warm-mid);
-  line-height: 1.9;
+  line-height: 1.95;
   margin-bottom: 20px;
+}
+.about-text h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 12px;
+  margin-top: 8px;
+  padding-left: 14px;
+  border-left: 3px solid var(--gold);
 }
 
 /* Values */
@@ -80,115 +56,77 @@
 }
 .value-card {
   text-align: center;
-  padding: 40px 24px;
+  padding: 36px 20px;
   background: white;
   border-radius: 10px;
   box-shadow: var(--shadow-sm);
   transition: transform .3s;
 }
 .value-card:hover { transform: translateY(-5px); }
-.value-icon { font-size: 2.4rem; margin-bottom: 16px; }
+.value-icon { font-size: 2.2rem; margin-bottom: 16px; }
 .value-name {
   font-family: 'Noto Serif TC', serif;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--bark);
   margin-bottom: 10px;
 }
-.value-desc { font-size: var(--fs-sm); color: var(--warm-mid); line-height: 1.7; }
+.value-desc { font-size: var(--fs-sm); color: var(--warm-mid); line-height: 1.85; }
 
-/* Team */
-.team-grid {
+/* Doing list */
+.doing-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-}
-.team-card {
-  text-align: center;
-}
-.team-img {
-  width: 140px; height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 20px;
-  border: 3px solid rgba(200,149,108,.3);
-  transition: border-color .3s, transform .3s;
-}
-.team-card:hover .team-img {
-  border-color: var(--gold);
-  transform: scale(1.04);
-}
-.team-name {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--bark);
-  margin-bottom: 4px;
-}
-.team-role {
-  font-family: 'DM Sans', sans-serif;
-  font-size: var(--fs-xs);
-  letter-spacing: .08em;
-  color: var(--gold);
-  margin-bottom: 12px;
-}
-.team-bio { font-size: var(--fs-sm); color: var(--warm-mid); line-height: 1.7; }
-
-/* Timeline */
-.timeline {
-  position: relative;
-  padding-left: 36px;
-  max-width: 760px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 780px;
   margin-inline: auto;
 }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--gold), rgba(200,149,108,.15));
+.doing-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
 }
-.timeline-item {
-  position: relative;
-  padding-bottom: 44px;
+.doing-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
-.timeline-item:last-child { padding-bottom: 0; }
-.timeline-dot {
-  position: absolute;
-  left: -43px; top: 4px;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: var(--gold);
-  border: 3px solid var(--cream);
-  box-shadow: 0 0 0 2px var(--gold);
-}
-.timeline-year {
-  font-family: 'DM Sans', sans-serif;
-  font-size: var(--fs-xs);
-  font-weight: 500;
-  letter-spacing: .1em;
-  color: var(--gold);
-  margin-bottom: 6px;
-}
-.timeline-event {
+.doing-label {
   font-family: 'Noto Serif TC', serif;
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   font-weight: 600;
   color: var(--bark);
-  margin-bottom: 8px;
 }
-.timeline-desc { font-size: var(--fs-sm); color: var(--warm-mid); line-height: 1.75; }
+
+/* Belief section */
+.belief-section {
+  background: linear-gradient(135deg, var(--bark) 0%, #5C3520 100%);
+}
+.belief-inner {
+  max-width: 700px;
+  margin-inline: auto;
+  text-align: center;
+}
+.belief-inner p {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: rgba(255,255,255,.85);
+  line-height: 2;
+  margin-bottom: 16px;
+}
+.belief-inner p:last-child { margin-bottom: 0; }
 
 @media (max-width: 1024px) {
-  .values-grid, .team-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 768px) {
-  .story-grid { grid-template-columns: 1fr; gap: 48px; }
-  .story-img-accent { display: none; }
-  .story-badge { left: 16px; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .about-intro-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-img-accent { display: none; }
 }
 @media (max-width: 640px) {
-  .values-grid, .team-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .doing-list { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -196,15 +134,12 @@
 
 <nav id="navbar">
   <div class="container nav-inner">
-    <a href="index.html" class="nav-logo">
-      <span class="logo-cn">共學與你</span>
-      <span class="logo-en">Learn Together With You</span>
-    </a>
+    <a href="index.html" class="nav-logo"><span class="logo-cn">共學與你</span></a>
     <ul class="nav-links">
       <li><a href="index.html">首頁</a></li>
       <li><a href="about.html" class="active">關於我們</a></li>
       <li><a href="courses.html">課程總覽</a></li>
-      <li><a href="gallery.html">精彩花絮</a></li>
+      <li><a href="gallery.html">活動花絮</a></li>
       <li><a href="news.html">最新消息</a></li>
       <li><a href="contact.html" class="nav-cta">聯絡我們</a></li>
     </ul>
@@ -213,205 +148,181 @@
 </nav>
 <nav class="mobile-menu">
   <a href="index.html">首頁</a><a href="about.html">關於我們</a>
-  <a href="courses.html">課程總覽</a><a href="gallery.html">精彩花絮</a>
+  <a href="courses.html">課程總覽</a><a href="gallery.html">活動花絮</a>
   <a href="news.html">最新消息</a><a href="contact.html">聯絡我們</a>
 </nav>
 
-<!-- Page Hero -->
 <div class="page-hero">
   <div class="container">
-    <span class="label">About Us</span>
-    <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:12px;">關於共學與你</h1>
-    <p class="section-sub">從一個小小的理想出發，成長為超過千名學員信賴的學習家園。</p>
+    <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:0;">關於共學與你</h1>
+    <p class="section-sub">我們希望把課程、陪伴與公益整理成一個更容易參與的社群，讓熟齡朋友在生活中多一點選擇，也多一點交流。</p>
     <nav class="breadcrumb">
-      <a href="index.html">首頁</a>
-      <span>›</span>
-      <span>關於我們</span>
+      <a href="index.html">首頁</a><span>›</span><span>關於我們</span>
     </nav>
   </div>
 </div>
 
-<!-- Story Section -->
+<!-- Why We Started -->
 <section class="section" style="background:var(--cream);">
   <div class="container">
-    <div class="story-grid">
-      <div class="story-img-wrap reveal">
-        <img class="story-img-main"
+    <div class="about-intro-grid">
+      <div class="about-img-wrap reveal">
+        <img class="about-img-main"
           src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80"
-          alt="共學與你創辦故事">
-        <img class="story-img-accent"
+          alt="熟齡朋友交流">
+        <img class="about-img-accent"
           src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=500&q=80"
           alt="課程花絮">
-        <div class="story-badge">
-          <span class="num">5</span>
-          <span class="txt">年深耕</span>
-        </div>
       </div>
-      <div class="story-text reveal reveal-delay-1">
-        <span class="label">Our Story</span>
+      <div class="about-text reveal reveal-delay-1">
+        <span class="label">我們為什麼開始</span>
         <div class="divider"></div>
-        <h2 class="section-heading">從一個問題出發</h2>
-        <p>「退休後，我的生活還有意義嗎？」這個問題，是共學與你最初的起點。</p>
-        <h3>創辦緣起</h3>
-        <p>2019年，創辦人王淑芬在陪伴年邁父母的過程中，深刻感受到熟齡族群在退休後面臨的孤寂與失落。她相信，學習與連結是讓生命持續豐盛的最好方式。</p>
-        <h3>成長歷程</h3>
-        <p>從一間借來的社區活動中心、十五位學員開始，共學與你在五年間成長為擁有超過1,200位學員、47位師資的溫暖學習平台。我們的核心不曾改變：以公益為本，讓每個人都能獲得優質的學習機會。</p>
-        <a href="news.html" class="btn btn-primary" style="margin-top:8px;">查看最新消息 →</a>
+        <h2 class="section-heading">從一個簡單的想法出發</h2>
+        <p>很多熟齡朋友退休後，生活節奏慢了下來，但也容易少了和人互動、學習新事物的機會。</p>
+        <p>共學與你希望做的，就是把適合的課程、活動與公益資訊整理起來，讓大家可以更輕鬆地找到想參與的內容。</p>
+        <h3>我們相信</h3>
+        <p>學習不一定要有壓力，也不一定要追求成果。有時候，一堂手作課、一場料理體驗、一次公益活動，就能讓生活多一點期待。</p>
+        <a href="courses.html" class="btn btn-primary" style="margin-top:8px;">查看近期課程</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Belief -->
+<section class="belief-section section">
+  <div class="container">
+    <div class="belief-inner">
+      <span class="label" style="color:var(--gold);">我們的信念</span>
+      <div class="divider" style="background:var(--gold);margin-inline:auto;"></div>
+      <p>學習不是為了考試，也不是為了展示成果。</p>
+      <p>學習是為了讓自己對生活保持好奇，願意繼續走出去，和人說說話，做點有趣的事。</p>
+      <p>能一起走這段路，是我們覺得很有意義的事。</p>
+    </div>
+  </div>
+</section>
+
+<!-- We Are Doing -->
+<section class="section" style="background:var(--ivory);">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="section-heading">我們正在做的事</h2>
+      <div class="divider"></div>
+      <p class="section-sub">課程資訊持續整理中，活動紀錄陸續更新。</p>
+    </div>
+    <div class="doing-list">
+      <div class="doing-item reveal">
+        <span class="doing-icon">📚</span>
+        <span class="doing-label">整理各地課程資訊</span>
+      </div>
+      <div class="doing-item reveal reveal-delay-1">
+        <span class="doing-icon">📷</span>
+        <span class="doing-label">分享活動花絮與群友心得</span>
+      </div>
+      <div class="doing-item reveal reveal-delay-2">
+        <span class="doing-icon">🙋</span>
+        <span class="doing-label">協助熟齡朋友了解報名方式</span>
+      </div>
+      <div class="doing-item reveal reveal-delay-3">
+        <span class="doing-icon">🌱</span>
+        <span class="doing-label">推動公益參與與生活陪伴</span>
+      </div>
+      <div class="doing-item reveal">
+        <span class="doing-icon">💬</span>
+        <span class="doing-label">讓社群成為可以交流詢問的地方</span>
+      </div>
+      <div class="doing-item reveal reveal-delay-1">
+        <span class="doing-icon">📋</span>
+        <span class="doing-label">把資訊整理得清楚好懂</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Values -->
-<section class="section" style="background:var(--ivory);">
-  <div class="container">
-    <div class="section-header text-center">
-      <span class="label">Our Values</span>
-      <div class="divider"></div>
-      <h2 class="section-heading">我們的核心價值</h2>
-    </div>
-    <div class="values-grid">
-      <div class="value-card reveal">
-        <div class="value-icon">🌿</div>
-        <div class="value-name">永續學習</div>
-        <p class="value-desc">學習是一生的旅程，我們陪伴每位學員在不同的人生階段持續成長。</p>
-      </div>
-      <div class="value-card reveal reveal-delay-1">
-        <div class="value-icon">❤️</div>
-        <div class="value-name">公益關懷</div>
-        <p class="value-desc">不讓任何人因為資源不足而被學習排除在外，是我們始終堅守的使命。</p>
-      </div>
-      <div class="value-card reveal reveal-delay-2">
-        <div class="value-icon">🤲</div>
-        <div class="value-name">社群連結</div>
-        <p class="value-desc">人與人之間的溫暖連結，是學習帶來最珍貴的禮物。</p>
-      </div>
-      <div class="value-card reveal reveal-delay-3">
-        <div class="value-icon">✨</div>
-        <div class="value-name">品質堅持</div>
-        <p class="value-desc">公益不等於將就，我們對教學品質與學員體驗始終保持最高標準。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Team -->
 <section class="section" style="background:var(--cream);">
   <div class="container">
     <div class="section-header text-center">
-      <span class="label">Our Team</span>
+      <h2 class="section-heading">核心價值</h2>
       <div class="divider"></div>
-      <h2 class="section-heading">核心團隊介紹</h2>
-      <p class="section-sub">每一位夥伴，都帶著對教育與公益的真誠熱忱。</p>
     </div>
-    <div class="team-grid">
-      <div class="team-card reveal">
-        <img class="team-img" src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=300&q=80" alt="王淑芬">
-        <div class="team-name">王淑芬</div>
-        <div class="team-role">創辦人 ／ 執行長</div>
-        <p class="team-bio">社工師出身，20年社區工作經驗，以公益為核心創辦共學與你。</p>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">📖</div>
+        <div class="value-name">終身學習</div>
+        <p class="value-desc">學習沒有年齡的界限，只要有興趣，隨時都可以開始。</p>
       </div>
-      <div class="team-card reveal reveal-delay-1">
-        <img class="team-img" src="https://images.unsplash.com/photo-1583195764036-a5f84b063937?w=300&q=80" alt="陳志遠">
-        <div class="team-name">陳志遠</div>
-        <div class="team-role">課程總監</div>
-        <p class="team-bio">師範大學藝術教育碩士，專注開發適合熟齡學習者的課程體系。</p>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-icon">🤗</div>
+        <div class="value-name">溫暖陪伴</div>
+        <p class="value-desc">不讓任何人因為不知道怎麼開始，而錯過適合自己的課程。</p>
       </div>
-      <div class="team-card reveal reveal-delay-2">
-        <img class="team-img" src="https://images.unsplash.com/photo-1553514029-1318c9127859?w=300&q=80" alt="林怡君">
-        <div class="team-name">林怡君</div>
-        <div class="team-role">公益業務主任</div>
-        <p class="team-bio">長期從事非營利組織管理，主責對外合作與公益活動規劃執行。</p>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-icon">💬</div>
+        <div class="value-name">生活交流</div>
+        <p class="value-desc">人與人之間的連結，是學習帶來最珍貴的收穫。</p>
       </div>
-      <div class="team-card reveal reveal-delay-3">
-        <img class="team-img" src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=300&q=80" alt="張建國">
-        <div class="team-name">張建國</div>
-        <div class="team-role">數位學習顧問</div>
-        <p class="team-bio">資深科技教育工作者，協助熟齡族群跨越數位落差，擁抱新科技。</p>
+      <div class="value-card reveal reveal-delay-3">
+        <div class="value-icon">❤️</div>
+        <div class="value-name">公益回饋</div>
+        <p class="value-desc">把學到的事、感受到的溫度，一點一滴地回饋給社會。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Timeline -->
-<section class="section" style="background:var(--ivory);">
+<!-- CTA -->
+<section class="section cta-banner" style="background:var(--ivory);border-top:1px solid var(--border);">
   <div class="container">
-    <div class="section-header text-center">
-      <span class="label">Milestones</span>
-      <div class="divider"></div>
-      <h2 class="section-heading">五年重要里程碑</h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2019 年</div>
-        <div class="timeline-event">正式創立，開設首批課程</div>
-        <p class="timeline-desc">在借來的社區活動中心，開辦15人的水彩班與書法班，從零開始。</p>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+      <div class="reveal">
+        <h2 class="section-heading" style="font-size:1.6rem;margin-bottom:8px;">想進一步了解我們在做什麼？</h2>
+        <p style="color:var(--warm-mid);font-size:var(--fs-lg);">歡迎透過 LINE 或表單與我們聯繫，不用客氣。</p>
       </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2020 年</div>
-        <div class="timeline-event">疫情期間轉型線上，服務不中斷</div>
-        <p class="timeline-desc">快速開發線上直播課程，協助學員適應數位學習，學員數逆勢成長至200人。</p>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2021 年</div>
-        <div class="timeline-event">設立實體學習空間</div>
-        <p class="timeline-desc">租設固定教學場地，正式開設常設課程，師資擴充至20位。</p>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2022 年</div>
-        <div class="timeline-event">獲頒公益團體優等獎</div>
-        <p class="timeline-desc">榮獲市政府社會局「社區終身學習推動優等獎」，肯定公益辦學成效。</p>
-      </div>
-      <div class="timeline-item reveal">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2024 年</div>
-        <div class="timeline-event">突破千人學員里程碑</div>
-        <p class="timeline-desc">累計受益學員超過1,200人，課程擴展至80餘門，成為在地最具影響力的熟齡學習平台。</p>
+      <div class="reveal reveal-delay-1" style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">聯絡我們</a>
+        <a href="courses.html" class="btn btn-outline">查看課程</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <span class="logo-cn">共學與你</span>
-        <span class="logo-en">Learn Together With You</span>
-        <p>以公益為核心的終身學習平台，為熟齡族群提供溫暖、有品質的學習環境。</p>
+        <p>共學與你是一個整理熟齡課程、活動花絮與公益陪伴紀錄的社群。希望透過學習、交流與陪伴，讓生活多一點溫度，也多一點期待。</p>
       </div>
       <div class="footer-col">
         <h4>快速連結</h4>
         <a href="index.html">首頁</a><a href="about.html">關於我們</a>
-        <a href="courses.html">課程總覽</a><a href="gallery.html">精彩花絮</a>
+        <a href="courses.html">課程總覽</a><a href="gallery.html">活動花絮</a>
+        <a href="news.html">最新消息</a><a href="contact.html">聯絡我們</a>
       </div>
       <div class="footer-col">
-        <h4>服務項目</h4>
-        <a href="courses.html">藝術創作課程</a><a href="courses.html">數位科技課程</a>
-        <a href="courses.html">健康養生課程</a><a href="courses.html">人文歷史課程</a>
+        <h4>課程類型</h4>
+        <a href="courses.html">手作體驗</a><a href="courses.html">料理課程</a>
+        <a href="courses.html">健康活動</a><a href="courses.html">走讀導覽</a>
+        <a href="courses.html">公益活動</a>
       </div>
       <div class="footer-col footer-contact">
         <h4>聯絡資訊</h4>
-        <p><span>📍</span><span>台北市信義區和平東路三段1號</span></p>
-        <p><span>📞</span><span>02-2345-6789</span></p>
-        <p><span>✉️</span><span>hello@learntogether.tw</span></p>
+        <p><span>💬</span><span>LINE：待補</span></p>
+        <p><span>📞</span><span>電話：待補</span></p>
+        <p><span>✉️</span><span>Email：待補</span></p>
+        <p><span>📍</span><span>活動地點：依各課程公告為準</span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 共學與你 Learn Together With You. 版權所有。</p>
+      <p>© 2026 共學與你｜版權所有</p>
       <div class="social-links">
-        <a href="#">f</a><a href="#" style="font-size:.65rem;font-weight:600;">LINE</a>
-        <a href="#">◎</a><a href="#">▶</a>
+        <a href="#">f</a>
+        <a href="#" style="font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:600;">LINE</a>
+        <a href="#">◎</a>
       </div>
     </div>
   </div>
 </footer>
-
 <script src="js/nav.js"></script>
 </body>
 </html>
