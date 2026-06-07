@@ -3,197 +3,188 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>公益花絮 — 共學與你</title>
+<title>課程總覽 — 共學與你</title>
 <link rel="stylesheet" href="css/global.css">
 <style>
-/* ── 公益活動區塊 ── */
-.charity-event-section {
-  padding-block: clamp(48px, 7vw, 80px);
-  border-bottom: 1px solid var(--border);
+/* ── 分類篩選 ── */
+.cat-filter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
 }
-.charity-event-section:last-of-type { border-bottom: none; }
-
-.charity-event-title {
-  font-family: 'Noto Serif TC', serif;
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  font-weight: 600;
-  color: var(--bark);
-  margin-bottom: 10px;
-}
-.charity-event-location {
+.cat-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
+  padding: 10px 22px;
+  border-radius: 32px;
+  border: 1.5px solid var(--border);
+  background: white;
+  font-family: 'Noto Serif TC', serif;
   font-size: var(--fs-sm);
   color: var(--warm-mid);
-  margin-bottom: 14px;
+  cursor: pointer;
+  transition: all .25s;
+  white-space: nowrap;
+  min-height: 46px;
 }
-.charity-event-tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
+.cat-btn:hover, .cat-btn.active {
+  background: var(--bark);
+  border-color: var(--bark);
+  color: white;
 }
 
-/* 左文右圖兩欄 */
-.event-body-grid {
+/* ── 版面：主區 + sidebar ── */
+.courses-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 36px;
   align-items: start;
 }
 
-/* 心得文字 */
-.charity-story {
+/* ── 課程卡片格線：2欄 ── */
+.all-courses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+/* ── 課程卡片 ── */
+.full-course-card {
   background: white;
   border-radius: 12px;
-  padding: 36px 32px;
-  box-shadow: var(--shadow-sm);
-  border-left: 4px solid var(--gold);
-  height: fit-content;
-}
-.charity-story p {
-  font-size: var(--fs-lg);
-  color: var(--charcoal);
-  line-height: 2;
-  margin-bottom: 20px;
-}
-.charity-story p:last-child { margin-bottom: 0; }
-
-/* 3×3 九宮格 */
-.grid-3x3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 8px;
-}
-
-/* 照片格 */
-.charity-photo-item {
-  border-radius: 6px;
   overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  background: var(--ivory);
-  aspect-ratio: 1 / 1;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s, box-shadow .3s;
+  display: flex;
+  flex-direction: column;
 }
-.charity-photo-item img {
+.full-course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── 課程圖片：16:9 統一高度 ── */
+.fc-img {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--ivory);
+}
+.fc-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform .5s;
   display: block;
-  transition: transform .5s ease;
 }
-.charity-photo-item:hover img { transform: scale(1.06); }
-.photo-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(61,35,20,.82) 0%, transparent 55%);
-  opacity: 0;
-  transition: opacity .35s;
+.full-course-card:hover .fc-img img { transform: scale(1.04); }
+
+/* ── 卡片內容 ── */
+.fc-body {
+  padding: 24px 24px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 16px;
+  flex: 1;
 }
-.charity-photo-item:hover .photo-overlay { opacity: 1; }
-.photo-overlay .photo-title {
+.fc-meta {
+  margin-bottom: 12px;
+}
+.fc-title {
   font-family: 'Noto Serif TC', serif;
-  font-size: .9rem;
-  font-weight: 500;
-  color: white;
-  line-height: 1.4;
-}
-
-/* Placeholder 區塊 */
-.placeholder-section {
-  background: var(--ivory);
-  border-radius: 12px;
-  padding: 48px 40px;
-  border: 2px dashed var(--border);
-  text-align: center;
-}
-.placeholder-section h3 {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   font-weight: 600;
-  color: var(--warm-mid);
+  color: var(--bark);
   margin-bottom: 10px;
+  line-height: 1.5;
 }
-.placeholder-section p {
+.fc-desc {
   font-size: var(--fs-sm);
-  color: rgba(107,87,68,.6);
+  color: var(--warm-mid);
   line-height: 1.85;
+  margin-bottom: 18px;
 }
 
-/* Lightbox */
-.lightbox {
-  position: fixed; inset: 0;
-  background: rgba(30,18,10,.93);
-  z-index: 9999;
-  display: none;
-  align-items: center;
+/* ── 課程資訊：直式列表 ── */
+.fc-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 18px;
+  background: var(--ivory);
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+.fc-detail-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+.fc-detail-label {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.85rem;
+  color: var(--gold-dk);
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.fc-detail-val {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--charcoal);
+}
+
+/* ── 按鈕：整列滿版 ── */
+.fc-foot {
+  display: block;
+  padding-top: 4px;
+  margin-top: auto;
+}
+.fc-foot .btn {
+  width: 100%;
   justify-content: center;
-  padding: 24px;
+  white-space: nowrap;
+  padding: 13px 20px;
+  font-size: var(--fs-sm);
 }
-.lightbox.open { display: flex; }
-.lightbox-inner {
-  position: relative;
-  max-width: 920px;
-  max-height: 88vh;
+
+/* ── Sidebar ── */
+.sidebar-card {
+  background: white;
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 40px 120px rgba(0,0,0,.6);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+  border-top: 3px solid var(--gold);
 }
-.lightbox-inner img { max-height: 85vh; width: auto; display: block; }
-.lightbox-caption {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 20px 24px;
-  background: linear-gradient(transparent, rgba(30,18,10,.9));
-}
-.lightbox-title {
-  color: white;
+.sidebar-card h3 {
   font-family: 'Noto Serif TC', serif;
   font-size: 1rem;
-}
-.lightbox-close {
-  position: fixed;
-  top: 20px; right: 20px;
-  width: 48px; height: 48px;
-  background: rgba(0,0,0,.5);
-  border: none; border-radius: 50%;
-  color: white; font-size: 1.2rem;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background .2s;
-}
-.lightbox-close:hover { background: var(--gold); }
-
-/* CTA */
-.cta-banner { background: var(--ivory); border-top: 1px solid var(--border); }
-.cta-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-.cta-text h2 {
-  font-family: 'Noto Serif TC', serif;
-  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
   color: var(--bark);
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 }
-.cta-text p { color: var(--warm-mid); font-size: var(--fs-lg); line-height: 1.85; }
+.sidebar-card p {
+  font-size: var(--fs-sm);
+  color: var(--warm-mid);
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+.sidebar-card p:last-child { margin-bottom: 0; }
 
-@media (max-width: 1024px) {
-  .event-body-grid { grid-template-columns: 1fr; gap: 32px; }
-  .grid-3x3 { grid-template-columns: repeat(3, 1fr); }
+/* ── 手機版 ── */
+@media (max-width: 900px) {
+  .courses-layout {
+    grid-template-columns: 1fr;
+  }
+  .all-courses-grid {
+    grid-template-columns: 1fr;
+  }
 }
 @media (max-width: 640px) {
-  .charity-story { padding: 24px 20px; }
-  .grid-3x3 { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+  .cat-filter { gap: 8px; }
+  .cat-btn { padding: 9px 16px; font-size: .85rem; }
 }
 </style>
 </head>
@@ -205,8 +196,8 @@
     <ul class="nav-links">
       <li><a href="index.html">首頁</a></li>
       <li><a href="about.html">關於我們</a></li>
-      <li><a href="courses.html">課程總覽</a></li>
-      <li><a href="gallery.html" class="active">公益花絮</a></li>
+      <li><a href="courses.html" class="active">課程總覽</a></li>
+      <li><a href="gallery.html">公益花絮</a></li>
       <li><a href="news.html">最新消息</a></li>
       <li><a href="contact.html" class="nav-cta">聯絡我們</a></li>
     </ul>
@@ -222,138 +213,187 @@
   <a href="contact.html">聯絡我們</a>
 </nav>
 
-<!-- 頁面標題 -->
 <div class="page-hero">
   <div class="container">
-    <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:0;">公益花絮</h1>
-    <p class="section-sub">記錄每一次參與公益的真實片段，從備餐、陪伴到分享，讓善意慢慢累積。</p>
-    <p style="font-size:var(--fs-sm);color:var(--warm-mid);line-height:1.85;max-width:560px;margin-top:16px;">這裡會整理共學與你參與公益活動的紀錄，包含活動現場、志工互動、陪伴過程與心得分享。每一次小小的付出，都是一份溫暖的累積。</p>
-    <nav class="breadcrumb"><a href="index.html">首頁</a><span>›</span><span>公益花絮</span></nav>
+    <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:0;">課程總覽</h1>
+    <p class="section-sub">這裡整理近期適合熟齡朋友參與的課程與活動，包含手作、料理、健康、走讀與公益體驗等內容。實際開課資訊請以社群公告為準。</p>
+    <nav class="breadcrumb"><a href="index.html">首頁</a><span>›</span><span>課程總覽</span></nav>
   </div>
 </div>
 
-<div style="background:var(--cream);">
+<section class="section" style="background:var(--cream);">
   <div class="container">
 
-    <!-- ══ 第一場公益活動：正德愛心廚房 ══ -->
-    <section class="charity-event-section">
+    <!-- 分類篩選 -->
+    <div class="cat-filter" id="catFilter">
+      <button class="cat-btn active" data-cat="all">全部課程</button>
+      <button class="cat-btn" data-cat="craft">✂️ 手作體驗</button>
+      <button class="cat-btn" data-cat="cooking">🍳 料理課程</button>
+      <button class="cat-btn" data-cat="health">🌿 健康活動</button>
+      <button class="cat-btn" data-cat="walk">🗺️ 走讀導覽</button>
+      <button class="cat-btn" data-cat="charity">❤️ 公益活動</button>
+    </div>
 
-      <div class="charity-event-title">正德愛心廚房</div>
-      <div class="charity-event-location">
-        <span>📍</span>
-        <span>新北市永和區店街里秀朗路一段50號</span>
+    <div class="courses-layout">
+
+      <!-- 課程主區 -->
+      <div>
+        <div class="all-courses-grid" id="coursesGrid">
+
+          <!-- 手作體驗 -->
+          <div class="full-course-card reveal" data-cat="craft">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80" alt="手作體驗課程">
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-gold">手作體驗</span></div>
+              <div class="fc-title">擴香石相片夾手作體驗</div>
+              <p class="fc-desc">用石膏製作擴香石，搭配乾燥花材與相片夾，做出可以放在家裡的實用小物，輕鬆上手，不需要任何基礎。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">主辦單位</span><span class="fc-detail-val">新北市各樂齡學習中心（文創藝能類）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">上課時間</span><span class="fc-detail-val">依各場次公告為準</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">課程地點</span><span class="fc-detail-val">依各場次公告為準</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">對手作有興趣的熟齡朋友</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">費用說明</span><span class="fc-detail-val">樂齡課程多為免費或低費；體驗課約 200–800 元不等</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">報名方式</span><span class="fc-detail-val">LINE 詢問 或洽各樂齡中心</span></div>
+              </div>
+              <div class="fc-foot"><a href="contact.html" class="btn btn-primary">LINE 詢問</a></div>
+            </div>
+          </div>
+
+          <!-- 料理課程 -->
+          <div class="full-course-card reveal reveal-delay-1" data-cat="cooking">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="料理體驗課程">
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-sage">料理課程</span></div>
+              <div class="fc-title">天然手工皂入門體驗課</div>
+              <p class="fc-desc">用天然植物油製作冷製手工皂，從選油、計算到入模一次學完，做好的皂可以帶回家，約一個月後即可使用。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">課程來源</span><span class="fc-detail-val">大稻埕好好生活文創手作 / 各手作工坊</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">上課時間</span><span class="fc-detail-val">約 1.5–2.5 小時，依場次為準</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">課程地點</span><span class="fc-detail-val">依各場次公告為準</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">想學天然手工皂、完全初學者均可</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">費用說明</span><span class="fc-detail-val">體驗課約 700–1,500 元（含材料費）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">報名方式</span><span class="fc-detail-val">LINE 詢問</span></div>
+              </div>
+              <div class="fc-foot"><a href="contact.html" class="btn btn-primary">LINE 詢問</a></div>
+            </div>
+          </div>
+
+          <!-- 健康活動 -->
+          <div class="full-course-card reveal" data-cat="health">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=800&q=80" alt="健康活動課程">
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-rust">健康活動</span></div>
+              <div class="fc-title">樂齡銀髮健康運動課</div>
+              <p class="fc-desc">針對中高齡設計的健康運動課程，結合彈力帶訓練、伸展與平衡練習，幫助維持肌力、降低跌倒風險，動作和緩不勉強。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">主辦單位</span><span class="fc-detail-val">新北市各樂齡學習中心（健康運動類）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">上課時間</span><span class="fc-detail-val">依各場次公告（多為每週固定一堂）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">課程地點</span><span class="fc-detail-val">依各區樂齡中心公告</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">55 歲以上，不需要運動基礎</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">費用說明</span><span class="fc-detail-val">樂齡中心課程多為免費，部分課程酌收材料費</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">報名方式</span><span class="fc-detail-val">LINE 詢問 或洽各樂齡中心</span></div>
+              </div>
+              <div class="fc-foot"><a href="contact.html" class="btn btn-primary">LINE 詢問</a></div>
+            </div>
+          </div>
+
+          <!-- 走讀導覽 -->
+          <div class="full-course-card reveal reveal-delay-1" data-cat="walk">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=800&q=80" alt="走讀導覽活動">
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-gold">走讀導覽</span></div>
+              <div class="fc-title">大稻埕老街文化走讀</div>
+              <p class="fc-desc">跟著導覽人走進大稻埕的老街與歷史建築，聽聽這條街百年來的故事，感受台北城的老味道，不趕行程，慢慢走。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">主辦單位</span><span class="fc-detail-val">台北市公民會館 / 各社區大學（人文社會類）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">活動時間</span><span class="fc-detail-val">依各場次公告（約 2–3 小時）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">活動地點</span><span class="fc-detail-val">依場次公告，多在雙北社區</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">喜歡走動、認識在地故事的朋友</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">費用說明</span><span class="fc-detail-val">部分免費；付費場次約 200–500 元</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">報名方式</span><span class="fc-detail-val">LINE 詢問</span></div>
+              </div>
+              <div class="fc-foot"><a href="contact.html" class="btn btn-primary">LINE 詢問</a></div>
+            </div>
+          </div>
+
+          <!-- 公益活動 -->
+          <div class="full-course-card reveal" data-cat="charity">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80" alt="公益陪伴活動">
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-rust">公益活動</span></div>
+              <div class="fc-title">正德愛心廚房志工服務</div>
+              <p class="fc-desc">到永和正德愛心廚房幫忙備餐、分裝，把餐點送給需要的家庭。不需要特別的能力，願意動手一起做就夠了。我們已實際參與，歡迎一起加入。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">服務地點</span><span class="fc-detail-val">新北市永和區秀朗路一段 50 號</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">活動時間</span><span class="fc-detail-val">依各場次公告為準</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">願意付出一點時間、參與公益的朋友</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">費用說明</span><span class="fc-detail-val">不收費（公益志工服務）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">報名方式</span><span class="fc-detail-val">LINE 詢問，我們會一起出發</span></div>
+              </div>
+              <div class="fc-foot"><a href="contact.html" class="btn btn-primary">LINE 詢問</a></div>
+            </div>
+          </div>
+
+          <!-- 生活學習 -->
+          <div class="full-course-card reveal reveal-delay-1" data-cat="craft">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&q=80" alt="生活學習課程">
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-sage">生活學習</span></div>
+              <div class="fc-title">老人社會大學熟齡課程</div>
+              <p class="fc-desc">台北老人社會大學每屆提供書法、國畫、攝影、手機應用、歌唱、太極拳、園藝療癒等多元課程，每學期約 10–20 堂，適合各種興趣的熟齡朋友。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">主辦單位</span><span class="fc-detail-val">老人社會大學（www.tau.tw）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">上課地點</span><span class="fc-detail-val">台北市松山區各校區</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">目前學期</span><span class="fc-detail-val">第 72 屆（2026 年起）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">熟齡朋友，各課程另有說明</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">費用說明</span><span class="fc-detail-val">依各課程公告為準，部分有補助</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">報名方式</span><span class="fc-detail-val">LINE 詢問 或直接洽老人社會大學</span></div>
+              </div>
+              <div class="fc-foot"><a href="contact.html" class="btn btn-primary">LINE 詢問</a></div>
+            </div>
+          </div>
+
+        </div><!-- end grid -->
       </div>
-      <div class="charity-event-tags">
-        <span class="badge badge-rust">公益陪伴</span>
-        <span class="badge badge-gold">愛心廚房</span>
-        <span class="badge badge-sage">志工服務</span>
-        <span class="badge badge-rust">餐點分裝</span>
-      </div>
 
-      <!-- 左文右圖 -->
-      <div class="event-body-grid">
-
-        <!-- 左：心得文字 -->
-        <div class="charity-story reveal">
-          <p>中午和小夥伴們一起到永和的正德愛心廚房幫忙，從洗菜、切菜到分裝餐點，大家邊忙邊聊天，氣氛很溫暖。雖然只是小小的付出，但把餐點送給需要的人時，心裡覺得很踏實。</p>
-          <p>過程中聽到一件事情讓人特別有感觸。夾菜位置有位媽媽和旁邊的大姐聊天，才知道她一個人獨自照顧三個小孩。當下真的很佩服，也有點心疼。生活一定不輕鬆，但她還是很努力把孩子照顧得很好。</p>
-          <p>突然覺得，很多媽媽的愛其實都很平凡，藏在每天的辛苦與默默付出裡。也因為這樣，更覺得能和大家一起做點有意義的事情，是一件很幸福的事。希望這份善意，也能慢慢傳遞下去。</p>
+      <!-- Sidebar -->
+      <aside>
+        <div class="sidebar-card reveal">
+          <h3>🗓 近期課程說明</h3>
+          <p>近期課程會依地區與時間陸續更新，實際內容請以社群公告為準。</p>
+          <p>若有特定課程想了解，歡迎透過 LINE 詢問，我們會盡量協助說明。</p>
         </div>
 
-        <!-- 右：3×3 九宮格 -->
-        <div class="grid-3x3 reveal reveal-delay-1">
-          <div class="charity-photo-item" data-title="正德愛心廚房公益紀錄">
-            <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D01.jpg" alt="正德愛心廚房公益活動" loading="lazy">
-            <div class="photo-overlay"><span class="photo-title">正德愛心廚房公益紀錄</span></div>
-          </div>
-          <div class="charity-photo-item" data-title="志工夥伴一起備餐">
-            <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D02.jpg" alt="志工備餐過程" loading="lazy">
-            <div class="photo-overlay"><span class="photo-title">志工夥伴一起備餐</span></div>
-          </div>
-          <div class="charity-photo-item" data-title="洗菜切菜的準備過程">
-            <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D03.jpg" alt="志工備餐過程" loading="lazy">
-            <div class="photo-overlay"><span class="photo-title">洗菜切菜的準備過程</span></div>
-          </div>
-          <div class="charity-photo-item" data-title="餐點分裝現場">
-            <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D04.jpg" alt="愛心餐點分裝" loading="lazy">
-            <div class="photo-overlay"><span class="photo-title">餐點分裝現場</span></div>
-          </div>
-          <div class="charity-photo-item" data-title="大家一起完成的溫暖行動">
-            <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D05.jpg" alt="公益陪伴紀錄" loading="lazy">
-            <div class="photo-overlay"><span class="photo-title">大家一起完成的溫暖行動</span></div>
-          </div>
-          <div class="charity-photo-item" data-title="愛心餐點準備中">
-            <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D06.jpg" alt="愛心餐點分裝" loading="lazy">
-            <div class="photo-overlay"><span class="photo-title">愛心餐點準備中</span></div>
-          </div>
-          <div class="charity-photo-item" data-title="志工夥伴交流時光">
-            <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D07.jpg" alt="志工互動花絮" loading="lazy">
-            <div class="photo-overlay"><span class="photo-title">志工夥伴交流時光</span></div>
-          </div>
-          <div class="charity-photo-item" data-title="把餐點送給需要的人">
-            <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D08.jpg" alt="公益陪伴紀錄" loading="lazy">
-            <div class="photo-overlay"><span class="photo-title">把餐點送給需要的人</span></div>
-          </div>
-          <div class="charity-photo-item" data-title="讓善意慢慢傳遞下去">
-            <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D09.jpg" alt="公益陪伴紀錄" loading="lazy">
-            <div class="photo-overlay"><span class="photo-title">讓善意慢慢傳遞下去</span></div>
-          </div>
+        <div class="sidebar-card reveal" style="background:linear-gradient(135deg,var(--bark),#5C3520);border-top-color:var(--gold);">
+          <h3 style="color:white;">💬 加入 LINE 詢問</h3>
+          <p style="color:rgba(255,255,255,.8);">想了解近期課程、活動資訊或有任何問題，都可以透過 LINE 與我們聯繫，我們會盡量回覆。</p>
+          <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;background:var(--gold);">前往聯絡頁面</a>
         </div>
+      </aside>
 
-      </div><!-- end event-body-grid -->
-
-    </section>
-
-    <!-- ══ 第二場公益活動 placeholder ══ -->
-    <!-- 第二場公益活動從這裡新增 -->
-    <section class="charity-event-section">
-      <div class="charity-event-title" style="color:var(--warm-mid);">第二場公益活動｜內容待補</div>
-      <div class="charity-event-location">
-        <span>📍</span>
-        <span style="color:rgba(107,87,68,.45);">地點待補</span>
-      </div>
-      <div class="placeholder-section">
-        <h3>這裡之後可以放第二場公益活動的紀錄內容</h3>
-        <p>包含活動心得、現場照片與志工互動紀錄。<br>新增時請複製第一場的 HTML 區塊，替換文字與照片連結即可。</p>
-      </div>
-    </section>
-
-  </div><!-- end container -->
-</div>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner">
-    <img id="lightboxImg" src="" alt="">
-    <div class="lightbox-caption">
-      <div class="lightbox-title" id="lightboxTitle"></div>
-    </div>
-  </div>
-  <button class="lightbox-close" id="lightboxClose">✕</button>
-</div>
-
-<!-- CTA -->
-<section class="section cta-banner">
-  <div class="container">
-    <div class="cta-inner">
-      <div class="cta-text reveal">
-        <h2>一起把善意慢慢傳遞下去</h2>
-        <p>公益不一定要做很大的事，有時候願意花一點時間、出一點力，就能讓需要的人感受到溫暖。</p>
-      </div>
-      <div class="reveal reveal-delay-1" style="display:flex;gap:14px;flex-wrap:wrap;">
-        <a href="index.html" class="btn btn-primary">回到首頁</a>
-        <a href="contact.html" class="btn btn-outline">聯絡我們</a>
-      </div>
-    </div>
+    </div><!-- end courses-layout -->
   </div>
 </section>
 
+<!-- Footer -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <span class="logo-cn">共學與你</span>
-        <p>共學與你是一個整理熟齡課程、公益花絮與生活陪伴紀錄的社群。希望透過學習、交流與陪伴，讓生活多一點溫度，也多一點期待。</p>
+        <p>共學與你是一個整理熟齡課程、活動花絮與公益陪伴紀錄的社群。希望透過學習、交流與陪伴，讓生活多一點溫度，也多一點期待。</p>
       </div>
       <div class="footer-col">
         <h4>快速連結</h4>
@@ -393,26 +433,16 @@
 
 <script src="js/nav.js"></script>
 <script>
-// Lightbox
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-const lightboxTitle = document.getElementById('lightboxTitle');
-
-document.querySelectorAll('.charity-photo-item').forEach(item => {
-  item.addEventListener('click', () => {
-    const img = item.querySelector('img');
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    lightboxTitle.textContent = item.dataset.title || '';
-    lightbox.classList.add('open');
-    document.body.style.overflow = 'hidden';
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    document.querySelectorAll('.full-course-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
   });
 });
-
-document.getElementById('lightboxClose').addEventListener('click', closeLB);
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLB(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
-function closeLB() { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
 </script>
 </body>
 </html>
