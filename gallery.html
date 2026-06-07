@@ -13,14 +13,6 @@
 }
 .charity-event-section:last-of-type { border-bottom: none; }
 
-.charity-event-header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: start;
-  gap: 24px;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-}
 .charity-event-title {
   font-family: 'Noto Serif TC', serif;
   font-size: clamp(1.4rem, 3vw, 2rem);
@@ -40,9 +32,10 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  margin-bottom: 32px;
 }
 
-/* 心得文字區 */
+/* 心得文字 */
 .charity-story {
   background: white;
   border-radius: 12px;
@@ -60,12 +53,12 @@
 }
 .charity-story p:last-child { margin-bottom: 0; }
 
-/* 照片牆（公益頁複用） */
+/* 照片格線 */
 .charity-photo-grid {
-  columns: 4;
+  columns: 3;
   column-gap: 12px;
 }
-.charity-photo-grid .full-photo-item {
+.charity-photo-item {
   break-inside: avoid;
   margin-bottom: 12px;
   border-radius: 8px;
@@ -74,20 +67,18 @@
   cursor: pointer;
   background: var(--ivory);
 }
-.charity-photo-grid .full-photo-item img {
+.charity-photo-item img {
   width: 100%;
   display: block;
-  max-height: 400px;
+  max-height: 420px;
   object-fit: cover;
   transition: transform .5s ease;
 }
-.charity-photo-grid .full-photo-item:hover img { transform: scale(1.04); }
-
-/* Overlay */
+.charity-photo-item:hover img { transform: scale(1.04); }
 .photo-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(61,35,20,.85) 0%, transparent 55%);
+  background: linear-gradient(to top, rgba(61,35,20,.82) 0%, transparent 55%);
   opacity: 0;
   transition: opacity .35s;
   display: flex;
@@ -95,46 +86,13 @@
   justify-content: flex-end;
   padding: 16px;
 }
-.full-photo-item:hover .photo-overlay { opacity: 1; }
-.photo-overlay .photo-cat {
-  font-family: 'Noto Serif TC', serif;
-  font-size: .72rem;
-  color: var(--gold);
-  margin-bottom: 4px;
-}
+.charity-photo-item:hover .photo-overlay { opacity: 1; }
 .photo-overlay .photo-title {
   font-family: 'Noto Serif TC', serif;
-  font-size: .88rem;
+  font-size: .9rem;
   font-weight: 500;
   color: white;
   line-height: 1.4;
-}
-
-/* 篩選列 */
-.gallery-filter {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-  align-items: center;
-}
-.filter-label { font-size: var(--fs-sm); color: var(--warm-mid); }
-.filter-tab {
-  padding: 9px 20px;
-  border-radius: 24px;
-  border: 1.5px solid var(--border);
-  background: white;
-  font-family: 'Noto Serif TC', serif;
-  font-size: var(--fs-sm);
-  color: var(--warm-mid);
-  cursor: pointer;
-  transition: all .25s;
-  min-height: 44px;
-}
-.filter-tab.active, .filter-tab:hover {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: white;
 }
 
 /* Placeholder 區塊 */
@@ -144,11 +102,10 @@
   padding: 48px 40px;
   border: 2px dashed var(--border);
   text-align: center;
-  margin-top: 16px;
 }
 .placeholder-section h3 {
   font-family: 'Noto Serif TC', serif;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--warm-mid);
   margin-bottom: 10px;
@@ -156,23 +113,7 @@
 .placeholder-section p {
   font-size: var(--fs-sm);
   color: rgba(107,87,68,.6);
-  line-height: 1.8;
-}
-.placeholder-photos {
-  display: flex;
-  gap: 12px;
-  margin-top: 24px;
-  justify-content: center;
-}
-.placeholder-photo {
-  width: 140px; height: 100px;
-  background: var(--border);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: rgba(107,87,68,.3);
+  line-height: 1.85;
 }
 
 /* Lightbox */
@@ -200,6 +141,11 @@
   bottom: 0; left: 0; right: 0;
   padding: 20px 24px;
   background: linear-gradient(transparent, rgba(30,18,10,.9));
+}
+.lightbox-title {
+  color: white;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1rem;
 }
 .lightbox-close {
   position: fixed;
@@ -231,14 +177,10 @@
 }
 .cta-text p { color: var(--warm-mid); font-size: var(--fs-lg); line-height: 1.85; }
 
-@media (max-width: 1024px) {
-  .charity-photo-grid { columns: 3; }
-  .charity-event-header { grid-template-columns: 1fr; }
-}
+@media (max-width: 1024px) { .charity-photo-grid { columns: 3; } }
 @media (max-width: 640px) {
   .charity-photo-grid { columns: 2; }
   .charity-story { padding: 24px 20px; }
-  .placeholder-photos { flex-wrap: wrap; }
 }
 </style>
 </head>
@@ -272,9 +214,7 @@
   <div class="container">
     <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:0;">公益花絮</h1>
     <p class="section-sub">記錄每一次參與公益的真實片段，從備餐、陪伴到分享，讓善意慢慢累積。</p>
-    <p style="font-size:var(--fs-sm);color:var(--warm-mid);line-height:1.85;max-width:560px;margin-top:16px;">
-      這裡會整理共學與你參與公益活動的紀錄，包含活動現場、志工互動、陪伴過程與心得分享。每一次小小的付出，都是一份溫暖的累積。
-    </p>
+    <p style="font-size:var(--fs-sm);color:var(--warm-mid);line-height:1.85;max-width:560px;margin-top:16px;">這裡會整理共學與你參與公益活動的紀錄，包含活動現場、志工互動、陪伴過程與心得分享。每一次小小的付出，都是一份溫暖的累積。</p>
     <nav class="breadcrumb"><a href="index.html">首頁</a><span>›</span><span>公益花絮</span></nav>
   </div>
 </div>
@@ -282,34 +222,19 @@
 <div style="background:var(--cream);">
   <div class="container">
 
-    <!-- 篩選列 -->
-    <div style="padding-top:clamp(40px,6vw,64px);">
-      <div class="gallery-filter" id="galleryFilter">
-        <span class="filter-label">篩選：</span>
-        <button class="filter-tab active" data-filter="all">全部</button>
-        <button class="filter-tab" data-filter="kitchen">愛心廚房</button>
-        <button class="filter-tab" data-filter="volunteer">志工服務</button>
-        <button class="filter-tab" data-filter="packing">餐點分裝</button>
-        <button class="filter-tab" data-filter="care">公益陪伴</button>
-      </div>
-    </div>
-
     <!-- ══ 第一場公益活動：正德愛心廚房 ══ -->
     <section class="charity-event-section">
-      <div class="charity-event-header">
-        <div>
-          <div class="charity-event-title">正德愛心廚房</div>
-          <div class="charity-event-location">
-            <span>📍</span>
-            <span>新北市永和區店街里秀朗路一段50號</span>
-          </div>
-          <div class="charity-event-tags">
-            <span class="badge badge-rust">公益陪伴</span>
-            <span class="badge badge-gold">愛心廚房</span>
-            <span class="badge badge-sage">志工服務</span>
-            <span class="badge badge-rust">餐點分裝</span>
-          </div>
-        </div>
+
+      <div class="charity-event-title">正德愛心廚房</div>
+      <div class="charity-event-location">
+        <span>📍</span>
+        <span>新北市永和區店街里秀朗路一段50號</span>
+      </div>
+      <div class="charity-event-tags">
+        <span class="badge badge-rust">公益陪伴</span>
+        <span class="badge badge-gold">愛心廚房</span>
+        <span class="badge badge-sage">志工服務</span>
+        <span class="badge badge-rust">餐點分裝</span>
       </div>
 
       <!-- 心得文字 -->
@@ -319,71 +244,59 @@
         <p>突然覺得，很多媽媽的愛其實都很平凡，藏在每天的辛苦與默默付出裡。也因為這樣，更覺得能和大家一起做點有意義的事情，是一件很幸福的事。希望這份善意，也能慢慢傳遞下去。</p>
       </div>
 
-      <!-- 10 張照片 -->
-      <div class="charity-photo-grid" id="galleryGrid">
-        <div class="full-photo-item reveal" data-cat="kitchen" data-title="正德愛心廚房公益紀錄">
-          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/charity-01.jpg" alt="正德愛心廚房公益活動" loading="lazy">
-          <div class="photo-overlay"><span class="photo-cat">愛心廚房</span><span class="photo-title">正德愛心廚房公益紀錄</span></div>
+      <!-- 9 張照片 D01–D09 -->
+      <div class="charity-photo-grid" id="photoGrid1">
+        <div class="charity-photo-item reveal" data-title="正德愛心廚房公益紀錄">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D01.jpg" alt="正德愛心廚房公益活動" loading="lazy">
+          <div class="photo-overlay"><span class="photo-title">正德愛心廚房公益紀錄</span></div>
         </div>
-        <div class="full-photo-item reveal" data-cat="volunteer" data-title="志工夥伴一起備餐">
-          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/charity-02.jpg" alt="志工備餐過程" loading="lazy">
-          <div class="photo-overlay"><span class="photo-cat">志工服務</span><span class="photo-title">志工夥伴一起備餐</span></div>
+        <div class="charity-photo-item reveal" data-title="志工夥伴一起備餐">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D02.jpg" alt="志工備餐過程" loading="lazy">
+          <div class="photo-overlay"><span class="photo-title">志工夥伴一起備餐</span></div>
         </div>
-        <div class="full-photo-item reveal" data-cat="volunteer" data-title="洗菜切菜的準備過程">
-          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/charity-03.jpg" alt="志工備餐過程" loading="lazy">
-          <div class="photo-overlay"><span class="photo-cat">志工服務</span><span class="photo-title">洗菜切菜的準備過程</span></div>
+        <div class="charity-photo-item reveal" data-title="洗菜切菜的準備過程">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D03.jpg" alt="志工備餐過程" loading="lazy">
+          <div class="photo-overlay"><span class="photo-title">洗菜切菜的準備過程</span></div>
         </div>
-        <div class="full-photo-item reveal" data-cat="packing" data-title="餐點分裝現場">
-          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/charity-04.jpg" alt="愛心餐點分裝" loading="lazy">
-          <div class="photo-overlay"><span class="photo-cat">餐點分裝</span><span class="photo-title">餐點分裝現場</span></div>
+        <div class="charity-photo-item reveal" data-title="餐點分裝現場">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D04.jpg" alt="愛心餐點分裝" loading="lazy">
+          <div class="photo-overlay"><span class="photo-title">餐點分裝現場</span></div>
         </div>
-        <div class="full-photo-item reveal" data-cat="kitchen" data-title="大家一起完成的溫暖行動">
-          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/charity-05.jpg" alt="公益陪伴紀錄" loading="lazy">
-          <div class="photo-overlay"><span class="photo-cat">愛心廚房</span><span class="photo-title">大家一起完成的溫暖行動</span></div>
+        <div class="charity-photo-item reveal" data-title="大家一起完成的溫暖行動">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D05.jpg" alt="公益陪伴紀錄" loading="lazy">
+          <div class="photo-overlay"><span class="photo-title">大家一起完成的溫暖行動</span></div>
         </div>
-        <div class="full-photo-item reveal" data-cat="packing" data-title="愛心餐點準備中">
-          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/charity-06.jpg" alt="愛心餐點分裝" loading="lazy">
-          <div class="photo-overlay"><span class="photo-cat">餐點分裝</span><span class="photo-title">愛心餐點準備中</span></div>
+        <div class="charity-photo-item reveal" data-title="愛心餐點準備中">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D06.jpg" alt="愛心餐點分裝" loading="lazy">
+          <div class="photo-overlay"><span class="photo-title">愛心餐點準備中</span></div>
         </div>
-        <div class="full-photo-item reveal" data-cat="volunteer" data-title="志工夥伴交流時光">
-          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/charity-07.jpg" alt="志工互動花絮" loading="lazy">
-          <div class="photo-overlay"><span class="photo-cat">志工服務</span><span class="photo-title">志工夥伴交流時光</span></div>
+        <div class="charity-photo-item reveal" data-title="志工夥伴交流時光">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D07.jpg" alt="志工互動花絮" loading="lazy">
+          <div class="photo-overlay"><span class="photo-title">志工夥伴交流時光</span></div>
         </div>
-        <div class="full-photo-item reveal" data-cat="care" data-title="把餐點送給需要的人">
-          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/charity-08.jpg" alt="公益陪伴紀錄" loading="lazy">
-          <div class="photo-overlay"><span class="photo-cat">公益陪伴</span><span class="photo-title">把餐點送給需要的人</span></div>
+        <div class="charity-photo-item reveal" data-title="把餐點送給需要的人">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D08.jpg" alt="公益陪伴紀錄" loading="lazy">
+          <div class="photo-overlay"><span class="photo-title">把餐點送給需要的人</span></div>
         </div>
-        <div class="full-photo-item reveal" data-cat="care" data-title="小小付出也很有意義">
-          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/charity-09.jpg" alt="公益陪伴紀錄" loading="lazy">
-          <div class="photo-overlay"><span class="photo-cat">公益陪伴</span><span class="photo-title">小小付出也很有意義</span></div>
-        </div>
-        <div class="full-photo-item reveal" data-cat="care" data-title="讓善意慢慢傳遞下去">
-          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/charity-10.jpg" alt="公益陪伴紀錄" loading="lazy">
-          <div class="photo-overlay"><span class="photo-cat">公益陪伴</span><span class="photo-title">讓善意慢慢傳遞下去</span></div>
+        <div class="charity-photo-item reveal" data-title="讓善意慢慢傳遞下去">
+          <img src="https://6a24eb8cd003a5030e08743d.imgix.net/D09.jpg" alt="公益陪伴紀錄" loading="lazy">
+          <div class="photo-overlay"><span class="photo-title">讓善意慢慢傳遞下去</span></div>
         </div>
       </div>
+
     </section>
 
     <!-- ══ 第二場公益活動 placeholder ══ -->
     <!-- 第二場公益活動從這裡新增 -->
     <section class="charity-event-section">
-      <div class="charity-event-header">
-        <div>
-          <div class="charity-event-title" style="color:var(--warm-mid);">第二場公益活動｜內容待補</div>
-          <div class="charity-event-location">
-            <span>📍</span>
-            <span style="color:rgba(107,87,68,.5);">地點待補</span>
-          </div>
-        </div>
+      <div class="charity-event-title" style="color:var(--warm-mid);">第二場公益活動｜內容待補</div>
+      <div class="charity-event-location">
+        <span>📍</span>
+        <span style="color:rgba(107,87,68,.45);">地點待補</span>
       </div>
       <div class="placeholder-section">
         <h3>這裡之後可以放第二場公益活動的紀錄內容</h3>
         <p>包含活動心得、現場照片與志工互動紀錄。<br>新增時請複製第一場的 HTML 區塊，替換文字與照片連結即可。</p>
-        <div class="placeholder-photos">
-          <div class="placeholder-photo">📷</div>
-          <div class="placeholder-photo">📷</div>
-          <div class="placeholder-photo">📷</div>
-        </div>
       </div>
     </section>
 
@@ -395,8 +308,7 @@
   <div class="lightbox-inner">
     <img id="lightboxImg" src="" alt="">
     <div class="lightbox-caption">
-      <span id="lightboxCat" style="font-size:.72rem;color:var(--gold);display:block;margin-bottom:4px;font-family:'Noto Serif TC',serif;"></span>
-      <div id="lightboxTitle" style="color:white;font-size:1rem;font-family:'Noto Serif TC',serif;"></div>
+      <div class="lightbox-title" id="lightboxTitle"></div>
     </div>
   </div>
   <button class="lightbox-close" id="lightboxClose">✕</button>
@@ -423,7 +335,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <span class="logo-cn">共學與你</span>
-        <p>共學與你是一個整理熟齡課程、活動花絮與公益陪伴紀錄的社群。希望透過學習、交流與陪伴，讓生活多一點溫度，也多一點期待。</p>
+        <p>共學與你是一個整理熟齡課程、公益花絮與生活陪伴紀錄的社群。希望透過學習、交流與陪伴，讓生活多一點溫度，也多一點期待。</p>
       </div>
       <div class="footer-col">
         <h4>快速連結</h4>
@@ -463,34 +375,22 @@
 
 <script src="js/nav.js"></script>
 <script>
-// 篩選功能
-document.querySelectorAll('.filter-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    const filter = tab.dataset.filter;
-    document.querySelectorAll('.full-photo-item').forEach(item => {
-      item.style.display = (filter === 'all' || item.dataset.cat === filter) ? '' : 'none';
-    });
-  });
-});
-
 // Lightbox
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
-const lightboxCat = document.getElementById('lightboxCat');
 const lightboxTitle = document.getElementById('lightboxTitle');
-document.querySelectorAll('.full-photo-item').forEach(item => {
+
+document.querySelectorAll('.charity-photo-item').forEach(item => {
   item.addEventListener('click', () => {
     const img = item.querySelector('img');
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
-    lightboxCat.textContent = item.querySelector('.photo-cat')?.textContent || '';
     lightboxTitle.textContent = item.dataset.title || '';
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
   });
 });
+
 document.getElementById('lightboxClose').addEventListener('click', closeLB);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLB(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
