@@ -53,28 +53,4 @@ document.addEventListener('DOMContentLoaded', () => {
     reveals.forEach(el => observer.observe(el));
   }
 
-  /* ── Counter animation ── */
-  const counters = document.querySelectorAll('[data-count]');
-  if (counters.length) {
-    const countObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const el = e.target;
-        const target = parseInt(el.dataset.count, 10);
-        const suffix = el.dataset.suffix || '';
-        const duration = 1800;
-        const start = performance.now();
-        const animate = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.floor(eased * target).toLocaleString('zh-TW') + suffix;
-          if (progress < 1) requestAnimationFrame(animate);
-        };
-        requestAnimationFrame(animate);
-        countObserver.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(el => countObserver.observe(el));
-  }
-
 });
