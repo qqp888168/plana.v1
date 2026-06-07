@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聯絡我們 — 共學與你</title>
+<link rel="stylesheet" href="css/global.css">
+<style>
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Form */
+.contact-form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 48px;
+  box-shadow: var(--shadow-md);
+}
+.form-group {
+  margin-bottom: 24px;
+}
+.form-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--bark);
+  margin-bottom: 8px;
+}
+.form-label span { color: var(--gold); }
+.form-control {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  font-family: 'Noto Serif TC', serif;
+  font-size: var(--fs-md);
+  color: var(--charcoal);
+  background: var(--cream);
+  transition: border-color .25s, box-shadow .25s;
+  outline: none;
+  -webkit-appearance: none;
+}
+.form-control:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(200,149,108,.15);
+}
+.form-control::placeholder { color: rgba(107,87,68,.4); }
+textarea.form-control {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.7;
+}
+select.form-control { cursor: pointer; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-submit {
+  width: 100%;
+  padding: 15px;
+  background: var(--gold);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--fs-md);
+  font-weight: 500;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 8px;
+}
+.form-submit:hover {
+  background: var(--gold-dk);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.form-note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--fs-xs);
+  color: var(--warm-mid);
+  text-align: center;
+  margin-top: 12px;
+}
+.success-msg {
+  display: none;
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  color: #2e7d32;
+  font-size: var(--fs-md);
+  margin-top: 16px;
+}
+
+/* Sidebar info */
+.info-card {
+  background: white;
+  border-radius: 10px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+}
+.info-card h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.info-item {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 18px;
+  align-items: flex-start;
+}
+.info-icon {
+  width: 38px; height: 38px;
+  border-radius: 8px;
+  background: rgba(200,149,108,.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.info-text-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--fs-xs);
+  letter-spacing: .06em;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+.info-text-val {
+  font-size: var(--fs-sm);
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+/* Map placeholder */
+.map-placeholder {
+  background: var(--ivory);
+  border-radius: 10px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  color: var(--warm-mid);
+  font-size: var(--fs-sm);
+  text-align: center;
+  margin-bottom: 24px;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* FAQ */
+.faq-section { background: var(--ivory); }
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.faq-item {
+  background: white;
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  border-left: 3px solid var(--gold);
+}
+.faq-q {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 12px;
+  display: flex;
+  gap: 10px;
+}
+.faq-q::before {
+  content: 'Q.';
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.faq-a {
+  font-size: var(--fs-sm);
+  color: var(--warm-mid);
+  line-height: 1.8;
+  padding-left: 24px;
+}
+
+@media (max-width: 1024px) {
+  .contact-layout { grid-template-columns: 1fr; }
+  .contact-form-card { padding: 32px 24px; }
+}
+@media (max-width: 640px) {
+  .form-row { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-cn">共學與你</span>
+      <span class="logo-en">Learn Together With You</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="about.html">關於我們</a></li>
+      <li><a href="courses.html">課程總覽</a></li>
+      <li><a href="gallery.html">精彩花絮</a></li>
+      <li><a href="news.html">最新消息</a></li>
+      <li><a href="contact.html" class="nav-cta active">聯絡我們</a></li>
+    </ul>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="mobile-menu">
+  <a href="index.html">首頁</a><a href="about.html">關於我們</a>
+  <a href="courses.html">課程總覽</a><a href="gallery.html">精彩花絮</a>
+  <a href="news.html">最新消息</a><a href="contact.html">聯絡我們</a>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="label">Contact Us</span>
+    <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:12px;">聯絡我們</h1>
+    <p class="section-sub">有任何問題或想報名課程，歡迎隨時與我們聯繫，我們會在一個工作天內回覆。</p>
+    <nav class="breadcrumb"><a href="index.html">首頁</a><span>›</span><span>聯絡我們</span></nav>
+  </div>
+</div>
+
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="contact-layout">
+      <!-- Form -->
+      <div class="contact-form-card reveal">
+        <span class="label">Send Message</span>
+        <div class="divider"></div>
+        <h2 class="section-heading" style="font-size:1.6rem;margin-bottom:28px;">填寫報名或諮詢表單</h2>
+
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">您的姓名 <span>*</span></label>
+              <input type="text" class="form-control" placeholder="王小明" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">聯絡電話 <span>*</span></label>
+              <input type="tel" class="form-control" placeholder="0912-345-678" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">電子郵件</label>
+            <input type="email" class="form-control" placeholder="example@mail.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">詢問事項 <span>*</span></label>
+            <select class="form-control" required>
+              <option value="" disabled selected>請選擇詢問類型</option>
+              <option>課程報名與查詢</option>
+              <option>公益補助申請</option>
+              <option>師資與課程合作</option>
+              <option>活動合辦洽談</option>
+              <option>其他問題</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">有興趣的課程（可複選）</label>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;">
+              <label style="display:flex;align-items:center;gap:6px;font-size:var(--fs-sm);color:var(--warm-mid);cursor:pointer;">
+                <input type="checkbox" style="accent-color:var(--gold);"> 藝術創作
+              </label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:var(--fs-sm);color:var(--warm-mid);cursor:pointer;">
+                <input type="checkbox" style="accent-color:var(--gold);"> 數位科技
+              </label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:var(--fs-sm);color:var(--warm-mid);cursor:pointer;">
+                <input type="checkbox" style="accent-color:var(--gold);"> 健康養生
+              </label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:var(--fs-sm);color:var(--warm-mid);cursor:pointer;">
+                <input type="checkbox" style="accent-color:var(--gold);"> 人文歷史
+              </label>
+              <label style="display:flex;align-items:center;gap:6px;font-size:var(--fs-sm);color:var(--warm-mid);cursor:pointer;">
+                <input type="checkbox" style="accent-color:var(--gold);"> 手作工藝
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">留言內容</label>
+            <textarea class="form-control" placeholder="請告訴我們您的需求或問題，我們會儘快回覆您…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">送出表單 ✉</button>
+          <p class="form-note">📞 也可直接來電：02-2345-6789（週一至週五 09:00–18:00）</p>
+        </form>
+        <div class="success-msg" id="successMsg">
+          🎉 感謝您的來信！我們已收到您的訊息，將在一個工作天內與您聯繫。
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside>
+        <div class="map-placeholder reveal">
+          <span style="font-size:2rem;">📍</span>
+          <span>台北市信義區和平東路三段1號<br>
+          <a href="https://maps.google.com" target="_blank" style="color:var(--gold);">在 Google Maps 開啟 →</a></span>
+        </div>
+
+        <div class="info-card reveal">
+          <h3>聯絡資訊</h3>
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div>
+              <div class="info-text-label">地址</div>
+              <div class="info-text-val">台北市信義區和平東路三段1號（捷運大安站2號出口，步行5分鐘）</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div>
+              <div class="info-text-label">服務電話</div>
+              <div class="info-text-val">02-2345-6789</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <div>
+              <div class="info-text-label">電子郵件</div>
+              <div class="info-text-val">hello@learntogether.tw</div>
+            </div>
+          </div>
+          <div class="info-item" style="margin-bottom:0;">
+            <div class="info-icon">🕘</div>
+            <div>
+              <div class="info-text-label">服務時間</div>
+              <div class="info-text-val">週一至週五 09:00–18:00<br>週六 09:00–13:00（僅電話）</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card reveal" style="background:linear-gradient(135deg,var(--bark),#5C3520);border:none;">
+          <h3 style="color:white;">加入 LINE 官方帳號</h3>
+          <p style="font-size:var(--fs-sm);color:rgba(255,255,255,.75);line-height:1.75;margin-bottom:20px;">掃描 QR Code 或搜尋 @learntogether，即時接收課程資訊與優惠通知。</p>
+          <div style="background:white;border-radius:8px;padding:20px;text-align:center;">
+            <div style="width:80px;height:80px;background:var(--ivory);border-radius:8px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;">💚</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--warm-mid);">@learntogether</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="label">FAQ</span>
+      <div class="divider"></div>
+      <h2 class="section-heading">常見問題解答</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <div class="faq-q">報名後可以退費嗎？</div>
+        <div class="faq-a">開課前7日內申請退費，可全額退款；開課後3堂課內可退還剩餘比例學費。詳細規定請洽詢工作人員。</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-q">課程有年齡限制嗎？</div>
+        <div class="faq-a">絕大多數課程無年齡限制，歡迎各年齡層參加。部分課程特別為55歲以上熟齡族群設計，說明頁會特別標註。</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <div class="faq-q">如何申請公益補助？</div>
+        <div class="faq-a">持低收入戶或中低收入戶證明、或65歲以上長者（攜帶身分證），均可到服務台申請課程費用補助，名額有限。</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-3">
+        <div class="faq-q">上課地點有大眾運輸嗎？</div>
+        <div class="faq-a">我們的教學中心鄰近捷運大安站，步行約5分鐘可達。亦有公車站牌在門口，交通十分便利。</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">課程材料費另計嗎？</div>
+        <div class="faq-a">各課程費用結構不同，藝術類與手作類課程通常包含基本材料費；詳細說明請見各課程頁面。</div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <div class="faq-q">可以先試聽再決定嗎？</div>
+        <div class="faq-a">部分課程提供一次免費試聽機會，請事先致電預約，以確保名額。試聽後決定報名，費用從第一堂起算。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-cn">共學與你</span>
+        <span class="logo-en">Learn Together With You</span>
+        <p>以公益為核心的終身學習平台，為熟齡族群提供溫暖、有品質的學習環境。</p>
+      </div>
+      <div class="footer-col">
+        <h4>快速連結</h4>
+        <a href="index.html">首頁</a><a href="about.html">關於我們</a>
+        <a href="courses.html">課程總覽</a><a href="gallery.html">精彩花絮</a>
+      </div>
+      <div class="footer-col">
+        <h4>服務項目</h4>
+        <a href="courses.html">藝術創作課程</a><a href="courses.html">數位科技課程</a>
+        <a href="courses.html">健康養生課程</a><a href="courses.html">人文歷史課程</a>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>聯絡資訊</h4>
+        <p><span>📍</span><span>台北市信義區和平東路三段1號</span></p>
+        <p><span>📞</span><span>02-2345-6789</span></p>
+        <p><span>✉️</span><span>hello@learntogether.tw</span></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 共學與你 Learn Together With You. 版權所有。</p>
+      <div class="social-links">
+        <a href="#">f</a><a href="#" style="font-size:.65rem;font-weight:600;">LINE</a>
+        <a href="#">◎</a><a href="#">▶</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  this.style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+  window.scrollTo({ top: document.getElementById('successMsg').offsetTop - 100, behavior: 'smooth' });
+});
+</script>
+</body>
+</html>

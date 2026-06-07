@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>課程總覽 — 共學與你</title>
+<link rel="stylesheet" href="css/global.css">
+<style>
+/* Category Filter */
+.cat-filter {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.cat-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 32px;
+  border: 1.5px solid var(--border);
+  background: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--fs-sm);
+  color: var(--warm-mid);
+  cursor: pointer;
+  transition: all .25s;
+  white-space: nowrap;
+}
+.cat-btn:hover, .cat-btn.active {
+  background: var(--bark);
+  border-color: var(--bark);
+  color: white;
+}
+.cat-btn .cat-icon { font-size: 1rem; }
+
+/* Courses Grid */
+.all-courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.full-course-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s, box-shadow .3s;
+  display: flex;
+  flex-direction: column;
+}
+.full-course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+.fc-img {
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--ivory);
+  position: relative;
+}
+.fc-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .5s;
+}
+.full-course-card:hover .fc-img img { transform: scale(1.05); }
+.fc-status {
+  position: absolute;
+  top: 14px; right: 14px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+.status-open { background: #e8f5e9; color: #2e7d32; }
+.status-full { background: #fce4ec; color: #c62828; }
+.status-soon { background: #fff8e1; color: #f57f17; }
+
+.fc-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.fc-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.fc-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+.fc-desc {
+  font-size: var(--fs-sm);
+  color: var(--warm-mid);
+  line-height: 1.75;
+  margin-bottom: 20px;
+  flex: 1;
+}
+.fc-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 16px;
+  background: var(--ivory);
+  border-radius: 6px;
+  margin-bottom: 18px;
+}
+.fc-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.fc-detail-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .65rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.fc-detail-val {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--bark);
+}
+.fc-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.fc-teacher {
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--fs-xs);
+  color: var(--warm-mid);
+}
+.fc-teacher strong { color: var(--bark); }
+
+/* Sidebar highlight */
+.courses-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+  align-items: start;
+}
+.sidebar-card {
+  background: white;
+  border-radius: 10px;
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+  border-top: 3px solid var(--gold);
+}
+.sidebar-card h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bark);
+  margin-bottom: 16px;
+}
+.sidebar-notice {
+  font-size: var(--fs-sm);
+  color: var(--warm-mid);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.news-list { display: flex; flex-direction: column; gap: 12px; }
+.news-item {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.news-item:last-child { border-bottom: none; padding-bottom: 0; }
+.news-date {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .68rem;
+  color: var(--gold);
+  white-space: nowrap;
+  padding-top: 2px;
+}
+.news-text {
+  font-size: var(--fs-sm);
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+@media (max-width: 1100px) {
+  .courses-layout { grid-template-columns: 1fr; }
+  .all-courses-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .all-courses-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-cn">共學與你</span>
+      <span class="logo-en">Learn Together With You</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="about.html">關於我們</a></li>
+      <li><a href="courses.html" class="active">課程總覽</a></li>
+      <li><a href="gallery.html">精彩花絮</a></li>
+      <li><a href="news.html">最新消息</a></li>
+      <li><a href="contact.html" class="nav-cta">聯絡我們</a></li>
+    </ul>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="mobile-menu">
+  <a href="index.html">首頁</a><a href="about.html">關於我們</a>
+  <a href="courses.html">課程總覽</a><a href="gallery.html">精彩花絮</a>
+  <a href="news.html">最新消息</a><a href="contact.html">聯絡我們</a>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="label">All Courses</span>
+    <h1 class="section-heading" style="font-size:clamp(2rem,5vw,3rem);margin-top:12px;">課程總覽</h1>
+    <p class="section-sub">超過80門精選課程，找到最適合您的學習旅程。</p>
+    <nav class="breadcrumb"><a href="index.html">首頁</a><span>›</span><span>課程總覽</span></nav>
+  </div>
+</div>
+
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="courses-layout">
+      <!-- Main -->
+      <div>
+        <div class="cat-filter" id="catFilter">
+          <button class="cat-btn active" data-cat="all"><span class="cat-icon">📚</span> 全部課程</button>
+          <button class="cat-btn" data-cat="art"><span class="cat-icon">🎨</span> 藝術創作</button>
+          <button class="cat-btn" data-cat="digital"><span class="cat-icon">💻</span> 數位科技</button>
+          <button class="cat-btn" data-cat="health"><span class="cat-icon">🌿</span> 健康養生</button>
+          <button class="cat-btn" data-cat="culture"><span class="cat-icon">📖</span> 人文歷史</button>
+          <button class="cat-btn" data-cat="craft"><span class="cat-icon">✂️</span> 手作工藝</button>
+        </div>
+
+        <div class="all-courses-grid" id="coursesGrid">
+
+          <div class="full-course-card reveal" data-cat="art">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=700&q=80" alt="水彩課">
+              <span class="fc-status status-open">開放報名</span>
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-gold">藝術創作</span></div>
+              <div class="fc-title">水彩風景畫入門班</div>
+              <p class="fc-desc">從認識水彩工具開始，逐步學習混色、渲染與構圖，以自然風景為題材，讓每位學員都能完成一幅動人的作品。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">上課時間</span><span class="fc-detail-val">每週二 14:00–16:00</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">課程期數</span><span class="fc-detail-val">共12堂（3個月）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">完全初學者</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">班級人數</span><span class="fc-detail-val">12人（小班制）</span></div>
+              </div>
+              <div class="fc-foot">
+                <div class="fc-teacher">師資：<strong>陳美惠 老師</strong></div>
+                <a href="contact.html" class="btn btn-primary" style="padding:9px 18px;font-size:.85rem;">立即報名</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="full-course-card reveal reveal-delay-1" data-cat="digital">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=700&q=80" alt="攝影課">
+              <span class="fc-status status-open">開放報名</span>
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-sage">數位科技</span></div>
+              <div class="fc-title">手機攝影美學課程</div>
+              <p class="fc-desc">用您手邊的智慧手機，拍出有故事的生活影像。課程涵蓋構圖、光線運用與後製技巧，不需要任何攝影基礎。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">上課時間</span><span class="fc-detail-val">每週四 10:00–12:00</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">課程期數</span><span class="fc-detail-val">共8堂（2個月）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">50歲以上皆適合</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">班級人數</span><span class="fc-detail-val">15人（小班制）</span></div>
+              </div>
+              <div class="fc-foot">
+                <div class="fc-teacher">師資：<strong>林大維 老師</strong></div>
+                <a href="contact.html" class="btn btn-primary" style="padding:9px 18px;font-size:.85rem;">立即報名</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="full-course-card reveal reveal-delay-2" data-cat="health">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=700&q=80" alt="瑜伽課">
+              <span class="fc-status status-full">名額已滿</span>
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-rust">健康養生</span></div>
+              <div class="fc-title">經絡養生瑜伽班</div>
+              <p class="fc-desc">結合傳統中醫經絡理論與現代瑜伽動作，舒緩常見的肩頸腰背痠痛，提升身體柔軟度與能量循環。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">上課時間</span><span class="fc-detail-val">每週一三五 08:00–09:00</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">課程期數</span><span class="fc-detail-val">長期班（月繳）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">各年齡層皆適合</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">班級人數</span><span class="fc-detail-val">20人</span></div>
+              </div>
+              <div class="fc-foot">
+                <div class="fc-teacher">師資：<strong>蔡琇雯 老師</strong></div>
+                <a href="contact.html" class="btn btn-outline" style="padding:9px 18px;font-size:.85rem;">候補登記</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="full-course-card reveal" data-cat="culture">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?w=700&q=80" alt="書法課">
+              <span class="fc-status status-open">開放報名</span>
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-gold">人文歷史</span></div>
+              <div class="fc-title">書法入門與人文涵養</div>
+              <p class="fc-desc">透過書法練習沉澱身心，同時深入了解漢字的文化底蘊與歷史流變，讓心靈得到真正的滋養。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">上課時間</span><span class="fc-detail-val">每週六 09:00–11:30</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">課程期數</span><span class="fc-detail-val">共16堂（4個月）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">初學至進階</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">班級人數</span><span class="fc-detail-val">12人（小班制）</span></div>
+              </div>
+              <div class="fc-foot">
+                <div class="fc-teacher">師資：<strong>吳承翰 老師</strong></div>
+                <a href="contact.html" class="btn btn-primary" style="padding:9px 18px;font-size:.85rem;">立即報名</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="full-course-card reveal reveal-delay-1" data-cat="craft">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=700&q=80" alt="手作課">
+              <span class="fc-status status-soon">即將開班</span>
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-sage">手作工藝</span></div>
+              <div class="fc-title">天然手工皂製作班</div>
+              <p class="fc-desc">使用天然植物油脂與精油，親手製作對肌膚友善的手工皂。學習調香與設計，將作品送給最重要的人。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">開班時間</span><span class="fc-detail-val">2024年9月（預計）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">課程期數</span><span class="fc-detail-val">共6堂（1.5個月）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">對手作有興趣者</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">班級人數</span><span class="fc-detail-val">10人（精緻小班）</span></div>
+              </div>
+              <div class="fc-foot">
+                <div class="fc-teacher">師資：<strong>黃心如 老師</strong></div>
+                <a href="contact.html" class="btn btn-outline" style="padding:9px 18px;font-size:.85rem;">預先登記</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="full-course-card reveal reveal-delay-2" data-cat="digital">
+            <div class="fc-img">
+              <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=700&q=80" alt="LINE課">
+              <span class="fc-status status-open">開放報名</span>
+            </div>
+            <div class="fc-body">
+              <div class="fc-meta"><span class="badge badge-sage">數位科技</span></div>
+              <div class="fc-title">智慧生活 LINE 應用班</div>
+              <p class="fc-desc">從LINE基本操作到群組管理、防詐自保、視訊通話，讓您與家人保持連結、安全使用網路。</p>
+              <div class="fc-details">
+                <div class="fc-detail-item"><span class="fc-detail-label">上課時間</span><span class="fc-detail-val">每週三 14:00–16:00</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-val">共6堂（1.5個月）</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">適合對象</span><span class="fc-detail-val">數位初學者</span></div>
+                <div class="fc-detail-item"><span class="fc-detail-label">班級人數</span><span class="fc-detail-val">12人（小班制）</span></div>
+              </div>
+              <div class="fc-foot">
+                <div class="fc-teacher">師資：<strong>張建國 顧問</strong></div>
+                <a href="contact.html" class="btn btn-primary" style="padding:9px 18px;font-size:.85rem;">立即報名</a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end grid -->
+      </div>
+
+      <!-- Sidebar -->
+      <aside>
+        <div class="sidebar-card">
+          <h3>📢 報名須知</h3>
+          <p class="sidebar-notice">所有課程採小班制，名額有限，建議提早登記以免向隅。報名成功後將以電話確認。</p>
+          <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">線上報名諮詢</a>
+        </div>
+        <div class="sidebar-card">
+          <h3>🗓 近期開課消息</h3>
+          <div class="news-list">
+            <div class="news-item">
+              <span class="news-date">09/01</span>
+              <span class="news-text">水彩班秋季班開始報名，限額12人</span>
+            </div>
+            <div class="news-item">
+              <span class="news-date">09/15</span>
+              <span class="news-text">手工皂班即將開課，最後3個名額</span>
+            </div>
+            <div class="news-item">
+              <span class="news-date">10/01</span>
+              <span class="news-date">書法班新一期招生啟動</span>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-card" style="background:linear-gradient(135deg,var(--bark),#5C3520);color:white;border-top-color:var(--gold);">
+          <h3 style="color:white;">💛 公益補助方案</h3>
+          <p style="font-size:var(--fs-sm);line-height:1.75;color:rgba(255,255,255,.8);margin-bottom:16px;">低收入戶、中低收入戶及65歲以上長者可申請課程費用補助，名額有限，歡迎洽詢。</p>
+          <a href="contact.html" class="btn" style="background:var(--gold);color:white;width:100%;justify-content:center;">了解補助資格</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-cn">共學與你</span>
+        <span class="logo-en">Learn Together With You</span>
+        <p>以公益為核心的終身學習平台，為熟齡族群提供溫暖、有品質的學習環境。</p>
+      </div>
+      <div class="footer-col">
+        <h4>快速連結</h4>
+        <a href="index.html">首頁</a><a href="about.html">關於我們</a>
+        <a href="courses.html">課程總覽</a><a href="gallery.html">精彩花絮</a>
+      </div>
+      <div class="footer-col">
+        <h4>服務項目</h4>
+        <a href="courses.html">藝術創作課程</a><a href="courses.html">數位科技課程</a>
+        <a href="courses.html">健康養生課程</a><a href="courses.html">人文歷史課程</a>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>聯絡資訊</h4>
+        <p><span>📍</span><span>台北市信義區和平東路三段1號</span></p>
+        <p><span>📞</span><span>02-2345-6789</span></p>
+        <p><span>✉️</span><span>hello@learntogether.tw</span></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 共學與你 Learn Together With You. 版權所有。</p>
+      <div class="social-links">
+        <a href="#">f</a><a href="#" style="font-size:.65rem;font-weight:600;">LINE</a>
+        <a href="#">◎</a><a href="#">▶</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script>
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    document.querySelectorAll('.full-course-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
