@@ -501,60 +501,10 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  /* Hero：單欄，照片拼貼當背景，文字疊在上面 */
-  .hero {
-    grid-template-columns: 1fr;
-    min-height: 100svh;
-    position: relative;
-  }
-  /* 讓照片拼貼鋪滿整個 hero 背景 */
-  .hero-right {
-    display: block;
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-  /* 照片上加深色半透明遮罩，讓文字清楚可讀 */
-  .hero-right::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(30, 16, 8, 0.55);
-    z-index: 1;
-  }
-  /* 文字層浮在照片上 */
-  .hero-left {
-    position: relative;
-    z-index: 2;
-    padding: 100px 28px 60px;
-    background: transparent;
-  }
-  .hero-left::before {
-    display: none;
-  }
-  /* 文字顏色改白色以在深色背景上清楚顯示 */
-  .hero-title-main,
-  .hero-title { color: white; }
-  .hero-title-sub { color: rgba(255,255,255,.82); }
-  .hero-desc { color: rgba(255,255,255,.78); }
-  .hero-rule { background: rgba(200,149,108,.9); }
-  .hero-eyebrow .label { color: var(--gold); }
-  .hero-eyebrow .line { background: var(--gold); }
-  /* 亮點三欄邊框顏色調整 */
-  .hero-highlights {
-    grid-template-columns: repeat(3, 1fr);
-    border-top-color: rgba(255,255,255,.18);
-  }
-  .hero-hi-item:not(:last-child) {
-    border-right-color: rgba(255,255,255,.18);
-  }
-  .hi-name { color: white; }
-  .hi-desc { color: rgba(255,255,255,.7); }
-  /* collage overlay 調整：移除從左到右的漸層，改成純透明 */
-  .collage-overlay {
-    background: transparent;
-  }
-
+  .hero { grid-template-columns: 1fr; min-height: unset; }
+  .hero-right { display: none; }
+  .hero-left { padding: 72px 28px 60px; }
+  .hero-highlights { grid-template-columns: repeat(3, 1fr); }
   .photo-grid { columns: 3; }
   .why-grid, .courses-grid, .testimonial-grid { grid-template-columns: 1fr 1fr; }
   .doing-grid { grid-template-columns: 1fr; }
@@ -563,13 +513,7 @@
   .photo-grid { columns: 2; }
   .why-grid, .courses-grid, .testimonial-grid { grid-template-columns: 1fr; }
   .hero-highlights { grid-template-columns: 1fr; gap: 16px; }
-  .hero-hi-item:not(:last-child) {
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,.18);
-    padding-bottom: 16px;
-    margin-right: 0;
-    margin-bottom: 16px;
-  }
+  .hero-hi-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-right: 0; margin-bottom: 16px; }
 }
 </style>
 </head>
